@@ -1,6 +1,5 @@
-package com.enlargeMe.server.config;
+package com.enlargeMe.server.email.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -10,7 +9,6 @@ import java.util.Properties;
 @Configuration
 public class JavaMailSenderConfig {
 
-    @Bean
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
