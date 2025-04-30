@@ -2,7 +2,6 @@ package com.enlargeMe.server.email.builder;
 
 import com.enlargeMe.server.email.config.JavaMailSenderConfig;
 import com.enlargeMe.server.email.model.Email;
-import com.enlargeMe.server.email.template.EmailTemplateBuilder;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -13,11 +12,9 @@ import org.springframework.stereotype.Component;
 public class EmailBuilder implements Email {
 
     private final JavaMailSender mailSender;
-    private final EmailTemplateBuilder emailTemplateBuilder;
 
-    public EmailBuilder(JavaMailSenderConfig mailSender, EmailTemplateBuilder emailTemplateBuilder) {
+    public EmailBuilder(JavaMailSenderConfig mailSender) {
         this.mailSender = mailSender.getJavaMailSender();
-        this.emailTemplateBuilder = emailTemplateBuilder;
     }
 
     @Override
