@@ -17,6 +17,8 @@ public class EmailTemplateBuilder {
     public String buildEmailTemplate(String templateName, Map<String, Object> body) {
         Context context = new Context();
         context.setVariables(body);
+        context.setVariable("baseUrl", "http://localhost:8080");
+        context.setVariable("id", 234563456L);
         return templateEngine.process(templateName, context);
     }
 }
