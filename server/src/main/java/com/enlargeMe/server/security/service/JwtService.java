@@ -74,7 +74,7 @@ public class JwtService {
             return !expirationTime.before(new Date());
 
         } catch (ParseException | JOSEException e) {
-            e.printStackTrace();
+            System.out.println("Error parsing or validating token: " + e.getMessage());
             return false; // Якщо виникла помилка при розборі або перевірці токену
         }
     }

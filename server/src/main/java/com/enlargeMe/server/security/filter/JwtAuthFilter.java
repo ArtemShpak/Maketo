@@ -38,7 +38,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             try {
                 username = jwtService.extractUsername(token);
             } catch (ParseException e) {
-                e.printStackTrace();
+                System.out.println("Token parsing error: " + e.getMessage());
             }
         }
 
