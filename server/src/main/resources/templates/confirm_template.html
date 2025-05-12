@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Підтвердження електронної пошти</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2 th:text="'Привіт, ' + ${name} + '!'">Привіт!</h2>
+    <p>Дякуємо за реєстрацію. Щоб завершити процес, будь ласка, підтвердьте свою електронну адресу, натиснувши кнопку нижче:</p>
+        <a th:href="${baseUrl + '/auth/verify?id=' + id}" class ="button">Підтвердити Email</a>
+
+    <p>Якщо ви не реєструвались на нашому сайті, просто проігноруйте цей лист.</p>
+
+    <div class="footer">
+        <p>Цей лист надіслано автоматично. Будь ласка, не відповідайте на нього.</p>
+    </div>
+</div>
+</body>
+</html>
