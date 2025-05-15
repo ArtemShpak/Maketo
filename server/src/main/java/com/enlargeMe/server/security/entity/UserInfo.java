@@ -22,5 +22,5 @@ public class UserInfo {
     private String password;
     private String roles;
     private String activationToken;
-    private boolean isActive = false;
+    private boolean isActive;
 }

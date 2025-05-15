@@ -38,4 +38,13 @@ public class UserInfoService implements UserDetailsService {
         repository.save(userInfo);
         return "User Added Successfully";
     }
+
+    public UserInfo findByActivationToken(String activationToken) {
+        return repository.findByActivationToken(activationToken)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with activation token: " + activationToken));
+    }
+
+    public boolean userExists(String email) {
+        return repository.findByEmail(email).isPresent();
+    }
 }

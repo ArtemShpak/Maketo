@@ -19,14 +19,14 @@ public class MailService {
         this.emailBuilder = emailBuilder;
     }
 
-    public void sendEmail(String to, String subject, String templateName, Map<String, Object> vars) {
-        String body = templateBuilder.buildEmailTemplate(templateName, vars);
-        try {
-            emailBuilder.sendEmail(to, subject, body);
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    public void sendEmail(String to, String subject, String templateName, Map<String, Object> vars) {
+//        String body = templateBuilder.buildEmailTemplate(templateName, vars);
+//        try {
+//            emailBuilder.sendEmail(to, subject, body);
+//        } catch (MessagingException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     public void sendJSONEmail(EmailRequest emailRequest) {
         String body = templateBuilder.buildEmailTemplate(emailRequest.getTemplateName(), emailRequest.getVars());
@@ -37,5 +37,15 @@ public class MailService {
         }
     }
 
-//    public void sendVerifyEmail(String to, )
+    public void sendVerifyEmail(String to, String token, String name) {
+        String subject = "Verify your email";
+        String templateName = "confirm_template";
+        Map<String, Object> vars = Map.of("name", name, "token", token);
+        String body = templateBuilder.buildEmailTemplate(templateName, vars);
+        try {
+            emailBuilder.sendEmail(to, subject, body);
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

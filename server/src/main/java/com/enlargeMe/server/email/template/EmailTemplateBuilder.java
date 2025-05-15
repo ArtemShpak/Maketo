@@ -17,8 +17,8 @@ public class EmailTemplateBuilder {
     public String buildEmailTemplate(String templateName, Map<String, Object> body) {
         Context context = new Context();
         context.setVariables(body);
-        context.setVariable("baseUrl", "http://localhost:8080/auth/activate");
-        context.setVariable("activationToken", 234563456L);
+        context.setVariable("baseUrl", "http://localhost:8080/auth/verifyEmail");
+        System.out.println("Variables in context: " + body);
         return templateEngine.process(templateName, context);
     }
 }

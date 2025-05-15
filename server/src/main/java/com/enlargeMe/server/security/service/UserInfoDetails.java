@@ -20,7 +20,7 @@ public class UserInfoDetails implements UserDetails {
     public UserInfoDetails(UserInfo userInfo) {
         this.username = userInfo.getEmail(); // Use email as username
         this.password = userInfo.getPassword();
-        this.accountIsActive = userInfo.isActive();
+//        this.accountIsActive = userInfo.isActive();
         this.authorities = Stream.of(userInfo.getRoles().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
@@ -58,6 +58,7 @@ public class UserInfoDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return accountIsActive;
+//        return accountIsActive;
+        return true;
     }
 }

@@ -15,10 +15,10 @@ public class EmailController {
         this.mailService = mailService;
     }
 
-    @GetMapping("/send-email")
-    public void sendMessage () {
-        mailService.sendEmail("artem6491@gmail.com", "Test Subject", "mail_template", Map.of("name", "Artem"));
-    }
+//    @GetMapping("/send-email")
+//    public void sendMessage () {
+//        mailService.sendEmail("artem6491@gmail.com", "Test Subject", "mail_template", Map.of("name", "Artem"));
+//    }
 
     @PostMapping("/send-email-json")
     public void sendJSONEmail (@RequestBody EmailRequest emailRequest) {
