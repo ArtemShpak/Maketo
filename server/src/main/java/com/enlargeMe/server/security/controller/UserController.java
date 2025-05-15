@@ -13,7 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
@@ -41,10 +41,9 @@ public class UserController {
         return service.addUser(userInfo);
     }
 
-    // Removed the role checks here as they are already managed in SecurityConfig
 
     @PostMapping("/generateToken")
-    public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) throws ParseException, JOSEException {
+    public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) throws JOSEException {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
         );
@@ -54,4 +53,5 @@ public class UserController {
             throw new UsernameNotFoundException("Invalid user request!");
         }
     }
+
 }
