@@ -26,15 +26,17 @@ public class UserInfoService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<UserInfo> userDetail = repository.findByEmail(username); // Assuming 'email' is used as username
-
         // Converting UserInfo to UserDetails
         return userDetail.map(UserInfoDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
     }
 
+    // In UserInfoService.java
     public String addUser(UserInfo userInfo) {
-        // Encode password before saving the user
-        userInfo.setPassword(encoder.encode(userInfo.getPassword()));
+        // Only encode if not already encoded (BCrypt hashes start with $2a$ or $2b$)
+        if (!userInfo.getPassword().startsWith("$2a$") && !userInfo.getPassword().startsWith("$2b$")) {
+            userInfo.setPassword(encoder.encode(userInfo.getPassword()));
+        }
         repository.save(userInfo);
         return "User Added Successfully";
     }

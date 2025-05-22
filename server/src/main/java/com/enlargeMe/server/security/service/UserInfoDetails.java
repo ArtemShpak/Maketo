@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+
+
 public class UserInfoDetails implements UserDetails {
 
     private final String username; // Changed from 'name' to 'email' for clarity
@@ -20,7 +22,7 @@ public class UserInfoDetails implements UserDetails {
     public UserInfoDetails(UserInfo userInfo) {
         this.username = userInfo.getEmail(); // Use email as username
         this.password = userInfo.getPassword();
-//        this.accountIsActive = userInfo.isActive();
+        this.accountIsActive = userInfo.isActive();
         this.authorities = Stream.of(userInfo.getRoles().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
@@ -58,7 +60,7 @@ public class UserInfoDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-//        return accountIsActive;
-        return true;
+        return accountIsActive;
+//        return true;
     }
 }

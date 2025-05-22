@@ -7,10 +7,10 @@ import com.enlargeMe.server.security.service.JwtService;
 import com.enlargeMe.server.security.service.UserInfoService;
 import com.nimbusds.jose.JOSEException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -57,16 +57,17 @@ public class UserController {
     }
 
 
-
-    @PostMapping("/login")
-    public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) throws JOSEException {
+    @PostMapping("/generateToken")
+    public ResponseEntity<?> authenticateAndGetToken(@RequestBody AuthRequest authRequest) throws JOSEException {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
         );
-        if (!authentication.isAuthenticated()) {
-            throw new UsernameNotFoundException("Invalid user request!");
+        if (authentication.isAuthenticated()) {
+            String token = jwtService.generateToken(authRequest.getUsername());
+            return ResponseEntity.ok(token);
+        } else {
+            return ResponseEntity.status(401).body("Invalid credentials");
         }
-        return "User authenticated";
     }
 
     @GetMapping("/verifyEmail")
@@ -80,5 +81,10 @@ public class UserController {
         } else {
             return "Invalid token!";
         }
+    }
+
+    @GetMapping("/admin/info")
+    public String getAdminInfo() {
+        return "This is admin info";
     }
 }

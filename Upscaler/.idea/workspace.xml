@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="761fbf60-ceb4-4474-912a-54d2291acf78" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Upscaler.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Upscaler.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/download.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/enlargeMe/server/security/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/enlargeMe/server/security/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/enlargeMe/server/security/entity/AuthRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/enlargeMe/server/security/entity/AuthRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/enlargeMe/server/security/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/enlargeMe/server/security/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/enlargeMe/server/security/filter/JwtAuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/enlargeMe/server/security/filter/JwtAuthFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/enlargeMe/server/security/service/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/enlargeMe/server/security/service/JwtService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/enlargeMe/server/security/service/UserInfoDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/enlargeMe/server/security/service/UserInfoDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/src/main/java/com/enlargeMe/server/security/service/UserInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/src/main/java/com/enlargeMe/server/security/service/UserInfoService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,21 +28,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "ArtemShpak"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ArtemShpak&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ArtemShpak/EnlargeMe.git",
-    "accountId": "5aa7f2b1-a620-49ae-980c-f58b6c33c0d1"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ArtemShpak/EnlargeMe.git&quot;,
+    &quot;accountId&quot;: &quot;5aa7f2b1-a620-49ae-980c-f58b6c33c0d1&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2x86RGl4xzByHDrsWwazgI9gHbk" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -56,7 +52,9 @@
   "keyToString": {
     "Python.scaler.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Artem/Desktop/NULP/Системи доповненої та віртуальної реальності/LAB5_WebXR_VRTK/Build",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -82,6 +80,9 @@
       <option name="presentableId" value="Default" />
       <updated>1747307344156</updated>
       <workItem from="1747307345208" duration="878000" />
+      <workItem from="1747481403260" duration="200000" />
+      <workItem from="1747643522129" duration="107000" />
+      <workItem from="1747816145355" duration="117000" />
     </task>
     <servers />
   </component>
@@ -89,6 +90,6 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Upscaler$scaler.coverage" NAME="scaler Coverage Results" MODIFIED="1747307600817" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Upscaler$scaler.coverage" NAME="scaler Coverage Results" MODIFIED="1747643527201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
