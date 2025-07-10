@@ -87,7 +87,7 @@ public class AuthController {
         return "This is admin info";
     }
 
-    @GetMapping("/forgetPassword")
+    @PostMapping("/forgetPassword")
     public String forgetPassword() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
             UserInfo userInfo = service.findUserByEmail(username);
@@ -95,8 +95,8 @@ public class AuthController {
         return "Password reset email sent to " + userInfo.getEmail();
     }
 
-    @GetMapping("/changePassword")
-    public String changePassword(@RequestParam String newPassword) {
+    @PostMapping("/changePassword")
+    public String changePassword(@RequestBody String newPassword) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         return service.changeUserPassword(username, newPassword);
     }

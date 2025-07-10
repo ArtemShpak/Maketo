@@ -3,11 +3,13 @@ package com.maketo.server.email.builder;
 import com.maketo.server.email.model.Email;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
+import org.springframework.context.annotation.Scope;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope("prototype")
 public class EmailBuilder implements Email {
 
     private final JavaMailSender mailSender;
@@ -18,6 +20,7 @@ public class EmailBuilder implements Email {
     public EmailBuilder(JavaMailSender mailSender) {
         this.mailSender = mailSender;
     }
+
     public EmailBuilder to(String to) {
         this.to = to;
         return this;
