@@ -55,12 +55,6 @@ public class UserInfoService implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
     }
 
-
-    public UserInfo findUserByEmail(String email) {
-        return repository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
-    }
-
     public UserInfo getCurrentUser() {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
         return getUserByEmail(email);
