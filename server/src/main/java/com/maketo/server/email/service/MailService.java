@@ -1,7 +1,7 @@
 package com.maketo.server.email.service;
 
 import com.maketo.server.email.builder.EmailBuilder;
-import com.maketo.server.email.dto.EmailRequest;
+import com.maketo.server.email.enums.EmailEnum;
 import com.maketo.server.email.model.IEmailInterface;
 import com.maketo.server.email.template.EmailTemplateBuilder;
 import com.maketo.server.security.entity.UserInfo;
@@ -21,8 +21,8 @@ public class MailService implements IEmailInterface {
         this.emailBuilder = emailBuilder;
     }
 
-    private void sendEmailInternal(String to, String subject, String templateName, Map<String, Object> vars) {
-        String body = templateBuilder.buildEmailTemplate(templateName, vars);
+    private void sendEmailInternal(String to, String subject, EmailEnum templateName, Map<String, Object> vars) {
+        String body = templateBuilder.buildEmailTemplate(templateName.getTemplateName(), vars);
         try {
             emailBuilder.to(to)
                     .subject(subject)
@@ -33,16 +33,7 @@ public class MailService implements IEmailInterface {
         }
     }
 
-//    public void sendJSONEmail(EmailRequest emailRequest) {
-//        sendEmailInternal(
-//                emailRequest.getTo(),
-//                emailRequest.getSubject(),
-//                emailRequest.getTemplateName(),
-//                emailRequest.getVars()
-//        );
-//    }
-
-    public void sendVerifyEmail(UserInfo userInfo, String templateName) {
+    public void sendVerifyEmail(UserInfo userInfo, EmailEnum templateName) {
         String subject = "Verify your email";
         Map<String, Object> vars = Map.of(
                 "name", userInfo.getName(),
@@ -51,7 +42,7 @@ public class MailService implements IEmailInterface {
         sendEmailInternal(userInfo.getEmail(), subject, templateName, vars);
     }
 
-    public void sendPasswordResetEmail(UserInfo userInfo, String templateName) {
+    public void sendPasswordResetEmail(UserInfo userInfo, EmailEnum templateName) {
         String subject = "Password Reset Request";
         Map<String, Object> vars = Map.of("name", userInfo.getName());
         sendEmailInternal(userInfo.getEmail(), subject, templateName, vars);

@@ -27,7 +27,7 @@ public class PasswordService {
 
     public String forgetPassword() {
         UserInfo user = userInfoService.getCurrentUser();
-        mailService.sendPasswordResetEmail(user, EmailEnum.RESET_PASSWORD.getTemplateName());
+        mailService.sendPasswordResetEmail(user, EmailEnum.RESET_PASSWORD);
         return "Password reset email sent to " + user.getEmail();
     }
 }

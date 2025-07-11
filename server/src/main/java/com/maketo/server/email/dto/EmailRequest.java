@@ -1,6 +1,7 @@
 package com.maketo.server.email.dto;
 
 
+import com.maketo.server.email.enums.EmailEnum;
 import lombok.Data;
 
 import java.util.Map;
@@ -13,7 +14,7 @@ public class EmailRequest {
 
     private String subject;
 
-    private String templateName;
+    private EmailEnum templateName;
 
     private Map<String, Object> vars;
 
