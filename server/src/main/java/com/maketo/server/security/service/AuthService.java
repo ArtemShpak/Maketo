@@ -44,7 +44,7 @@ public class AuthService implements IAuthInterface {
 
         // Надсилання верифікаційного листа
         System.out.println("Sending verification email to: " + userInfo.getEmail());
-        mailService.sendVerifyEmail(userInfo, EmailEnum.VERIFY.getTemplateName());
+        mailService.sendVerifyEmail(userInfo, EmailEnum.VERIFY);
 
         // Збереження користувача
         userInfoService.addUser(userInfo);
