@@ -2,6 +2,7 @@ package com.maketo.server.email.service;
 
 import com.maketo.server.email.builder.EmailBuilder;
 import com.maketo.server.email.dto.EmailRequest;
+import com.maketo.server.email.model.IEmailInterface;
 import com.maketo.server.email.template.EmailTemplateBuilder;
 import com.maketo.server.security.entity.UserInfo;
 import jakarta.mail.MessagingException;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 @Service
-public class MailService {
+public class MailService implements IEmailInterface {
 
     private final EmailTemplateBuilder templateBuilder;
     private final EmailBuilder emailBuilder;
@@ -32,14 +33,14 @@ public class MailService {
         }
     }
 
-    public void sendJSONEmail(EmailRequest emailRequest) {
-        sendEmailInternal(
-                emailRequest.getTo(),
-                emailRequest.getSubject(),
-                emailRequest.getTemplateName(),
-                emailRequest.getVars()
-        );
-    }
+//    public void sendJSONEmail(EmailRequest emailRequest) {
+//        sendEmailInternal(
+//                emailRequest.getTo(),
+//                emailRequest.getSubject(),
+//                emailRequest.getTemplateName(),
+//                emailRequest.getVars()
+//        );
+//    }
 
     public void sendVerifyEmail(UserInfo userInfo, String templateName) {
         String subject = "Verify your email";
