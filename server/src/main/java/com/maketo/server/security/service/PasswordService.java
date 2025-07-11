@@ -1,5 +1,6 @@
 package com.maketo.server.security.service;
 
+import com.maketo.server.email.enums.EmailEnum;
 import com.maketo.server.email.service.MailService;
 import com.maketo.server.security.entity.UserInfo;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,7 +27,7 @@ public class PasswordService {
 
     public String forgetPassword() {
         UserInfo user = userInfoService.getCurrentUser();
-        mailService.sendPasswordResetEmail(user, "reset_password_template.html");
+        mailService.sendPasswordResetEmail(user, EmailEnum.RESET_PASSWORD.getTemplateName());
         return "Password reset email sent to " + user.getEmail();
     }
 }

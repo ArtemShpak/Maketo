@@ -1,5 +1,6 @@
 package com.maketo.server.security.service;
 
+import com.maketo.server.email.enums.EmailEnum;
 import com.maketo.server.email.service.MailService;
 import com.maketo.server.security.entity.AuthRequest;
 import com.maketo.server.security.entity.UserInfo;
@@ -43,7 +44,7 @@ public class AuthService implements IAuthInterface {
 
         // Надсилання верифікаційного листа
         System.out.println("Sending verification email to: " + userInfo.getEmail());
-        mailService.sendVerifyEmail(userInfo, "confirm_template.html");
+        mailService.sendVerifyEmail(userInfo, EmailEnum.VERIFY.getTemplateName());
 
         // Збереження користувача
         userInfoService.addUser(userInfo);
