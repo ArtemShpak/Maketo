@@ -1,35 +1,22 @@
 package com.maketo.server.security.controller;
 
-import com.maketo.server.email.service.MailService;
 import com.maketo.server.security.entity.AuthRequest;
 import com.maketo.server.security.entity.UserInfo;
-import com.maketo.server.security.service.JwtService;
-import com.maketo.server.security.service.UserInfoService;
+import com.maketo.server.security.service.AuthService;
 import com.nimbusds.jose.JOSEException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
 
-    private final UserInfoService service;
-    private final JwtService jwtService;
-    private final AuthenticationManager authenticationManager;
-    private final MailService mailService;
-
+    private final AuthService authService;
 
     @Autowired
-    public AuthController(UserInfoService service, JwtService jwtService, AuthenticationManager authenticationManager, MailService mailService) {
-        this.service = service;
-        this.jwtService = jwtService;
-        this.authenticationManager = authenticationManager;
-        this.mailService = mailService;
+    public AuthController(AuthService authService) {
+        this.authService = authService;
     }
 
     @GetMapping("/welcome")
@@ -39,46 +26,26 @@ public class AuthController {
 
     @PostMapping("/addNewUser")
     public String addNewUser(@RequestBody UserInfo userInfo) throws JOSEException {
-        if (service.userExists(userInfo.getEmail())) {
-            throw new IllegalArgumentException("User already exists with this email");
-        }
-
-        String token = jwtService.generateToken(userInfo.getEmail());
-        userInfo.setActivationToken(token);
-        userInfo.setActive(false);
-
-        // Надсилання верифікаційного листа
-        System.out.println("Sending verification email to: " + userInfo.getEmail());
-        mailService.sendVerifyEmail(userInfo, "confirm_template.html");
-
-        // Збереження користувача
-        return service.addUser(userInfo);
+        return authService.registerUserAndSendVerificationEmail(userInfo);
     }
 
-
     @PostMapping("/login")
-    public ResponseEntity<?> authenticateAndGetToken(@RequestBody AuthRequest authRequest) throws JOSEException {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword())
-        );
-        if (authentication.isAuthenticated()) {
-            String token = jwtService.generateToken(authRequest.getUsername());
+    public ResponseEntity<?> authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
+        try {
+            String token = authService.userLogin(authRequest);
             return ResponseEntity.ok(token);
-        } else {
+        } catch (Exception e) {
             return ResponseEntity.status(401).body("Invalid credentials");
         }
     }
 
-    @GetMapping("/verifyEmail")
-    public String verifyEmail(@RequestParam String token) {
-        UserInfo userInfo = service.findByActivationToken(token);
-        if (userInfo != null) {
-            userInfo.setActive(true);
-            userInfo.setActivationToken(null);
-            service.addUser(userInfo);
-            return "Email verified successfully!";
+    @PostMapping("/verifyEmail")
+    public ResponseEntity<String> verifyEmail(@RequestBody String token) {
+        String result = authService.verifyEmail(token.replace("\"", ""));
+        if ("Email verified successfully!".equals(result)) {
+            return ResponseEntity.ok(result);
         } else {
-            return "Invalid token!";
+            return ResponseEntity.badRequest().body(result);
         }
     }
 
@@ -89,15 +56,12 @@ public class AuthController {
 
     @PostMapping("/forgetPassword")
     public String forgetPassword() {
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-            UserInfo userInfo = service.findUserByEmail(username);
-            mailService.sendPasswordResetEmail(userInfo, "reset_password_template.html");
-        return "Password reset email sent to " + userInfo.getEmail();
+        return authService.forgetPassword();
     }
 
+    //Post, щоб пароль передавався захищено, в тілі запиту
     @PostMapping("/changePassword")
     public String changePassword(@RequestBody String newPassword) {
-        String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        return service.changeUserPassword(username, newPassword);
+        return authService.changeUserPassword(newPassword);
     }
 }
