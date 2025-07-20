@@ -3,6 +3,7 @@ package com.maketo.server.security.service;
 import com.maketo.server.security.entity.UserInfo;
 import com.maketo.server.security.repository.UserInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -32,13 +33,12 @@ public class UserInfoService implements UserDetailsService {
     }
 
     // In UserInfoService.java
-    public String addUser(UserInfo userInfo) {
+    public void addUser(UserInfo userInfo) {
         // Only encode if not already encoded (BCrypt hashes start with $2a$ or $2b$)
         if (!userInfo.getPassword().startsWith("$2a$") && !userInfo.getPassword().startsWith("$2b$")) {
             userInfo.setPassword(encoder.encode(userInfo.getPassword()));
         }
         repository.save(userInfo);
-        return "User Added Successfully";
     }
 
     public UserInfo findByActivationToken(String activationToken) {
@@ -50,15 +50,14 @@ public class UserInfoService implements UserDetailsService {
         return repository.findByEmail(email).isPresent();
     }
 
-    public String changeUserPassword(String email, String password) {
-        UserInfo user = repository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
-        user.setPassword(encoder.encode(password));
-        repository.save(user);
-        return "Password changed successfully";
-    }
-
-    public UserInfo findUserByEmail(String email) {
+    public UserInfo getUserByEmail(String email) {
         return repository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
     }
+
+    public UserInfo getCurrentUser() {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        return getUserByEmail(email);
+    }
+
 }

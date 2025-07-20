@@ -13,7 +13,7 @@ target/
 .springBeans
 .sts4-cache
 src/main/resources/email.properties
-src/main/resources/JWT.properties
+src/main/resources/jwt.properties
 
 
 ### IntelliJ IDEA ###
