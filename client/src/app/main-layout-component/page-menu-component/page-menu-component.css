@@ -1,0 +1,78 @@
+* {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+header {
+  max-height: 73px;
+}
+
+hr {
+  opacity: 0.2;
+  height: 1px;
+  border: none;
+  background: #fff;
+  margin-bottom: 194px;
+}
+
+nav {
+  margin: 32px 306px;
+  max-width: 1308px;
+  height: 41px;
+  display: flex;
+  width: 100%;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  /*justify-content: center;*/
+  align-items: center;
+  width: 100%;
+  gap: 215px;
+}
+
+ul a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.leftLinks {
+  display: flex;
+  gap: 24px;
+}
+
+
+.rightLinks {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.authButton {
+  font-weight: 500;
+  font-size: 16px;
+  width: 160px;
+  height: 52px;
+  color: #000000;
+  background: #FFFFFF;
+  border-radius: 55px;
+  border: none;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 15px
+}
+
+.name {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+}
+
+
+

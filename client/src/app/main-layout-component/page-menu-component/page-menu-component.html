@@ -1,1 +1,28 @@
-<p>page-menu-component works!</p>
+<header>
+  <nav>
+    <ul>
+      <li>
+        <div class="leftLinks">
+          <a routerLink="/maketo/about">About</a>
+          <a routerLink="/maketo/technologies">Technologies</a>
+          <a routerLink="/maketo/products">Products</a>
+          <a routerLink="maketo/discover">Discover</a>
+        </div>
+      </li>
+    <li>
+      <div class="logoContainer">
+        <img ngSrc="/assets/icons/MainIcon.svg" alt="Logo" class="logo" height="25" width="30">
+        <a class="name">Maketo AI</a>
+      </div>
+    </li>
+    <li>
+      <div class="rightLinks">
+        <a routerLink="/pricing">Pricing</a>
+        <a routerLink="/maketo/login">Log in</a>
+        <button class="authButton signInButton" routerLink="/maketo/register">Sign in</button>
+      </div>
+    </li>
+    </ul>
+  </nav>
+</header>
+<hr/>

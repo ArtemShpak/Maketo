@@ -1,3 +1,7 @@
 body {
-  background-color: #E6E3E1;
+  margin: 0;
+  height: 100vh;
+  background-color: #000; /* для контраста */
+  position: relative;
+  overflow: hidden;
 }
