@@ -5,19 +5,18 @@
 }
 
 header {
+  background-color: #000;
   max-height: 73px;
-}
-
-hr {
-  opacity: 0.2;
-  height: 1px;
-  border: none;
-  background: #fff;
-  margin-bottom: 194px;
+  height: 73px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 nav {
-  margin: 32px 306px;
+  margin: 16px auto;
   max-width: 1308px;
   height: 41px;
   display: flex;
@@ -27,7 +26,6 @@ nav {
 ul {
   display: flex;
   list-style: none;
-  /*justify-content: center;*/
   align-items: center;
   width: 100%;
   gap: 215px;
@@ -74,5 +72,8 @@ ul a {
   font-size: 22px;
 }
 
-
+.divider {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 0;
+}
 
