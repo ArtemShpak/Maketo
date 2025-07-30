@@ -1,1 +1,83 @@
+.sphere-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
 
+.white-blurred-sphere {
+  position: absolute;
+  top: 400px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1100px;
+  height: 1100px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  filter: blur(624px);
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.icons {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.icon {
+  position: absolute;
+  width: 20px;
+  opacity: 0.7;
+}
+
+/* Позиції */
+.icon-top-left     { top: -60px;  left: 164px; }
+.icon-top-center {
+  height: 41px;
+  width: 41px;
+  top: -20px;
+  left: 700px;
+  transform: translateX(-50%);
+}
+
+.icon-top-right {
+  height: 30px;
+  width: 30px;
+  top: 30px;
+  right: 400px;
+}
+.icon-left {
+  height: 25px;
+  width: 25px;
+  top: 50%;
+  left: 500px;
+  transform: translateY(-50%);
+}
+.icon-right {
+  height: 35px;
+  width: 35px;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+}
+
+.icon-bottom-left  {
+  height: 26px;
+  width: 26px;
+  bottom: 20px;
+  left: 250px;
+}
+.icon-bottom-right {
+  height: 25px;
+  width: 25px;
+  bottom: 0px;
+  right: 250px;
+}

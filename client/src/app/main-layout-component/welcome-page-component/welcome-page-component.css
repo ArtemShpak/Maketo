@@ -1,18 +1,117 @@
-:host {
+.text-center {
+  margin-top: 200px;
   position: relative;
-  display: block;
-  height: 100vh;
+  font-family: 'Manrope', sans-serif;
+  text-align: center;
 }
 
-.white-blurred-sphere {
+h1 {
+  font-weight: 500;
+  font-size: 64px;
+  color: white;
+}
+
+.build-wrapper {
+  display: inline-flex;
+  justify-content: center;
+  margin-left: 2px;
+  vertical-align: middle;
+}
+
+.dashed-box {
+  transform: rotate(-4deg);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Manrope', sans-serif;
+  font-size: 64px;
+  font-weight: 500;
+  max-width: 180px;
+  max-height: 67px;
+  width: 180px;
+  height: 68px;
+  border: 2px dashed white;
+  color: white;
+  text-align: center;
+}
+
+.corner-dot {
   position: absolute;
-  bottom: -456px; /* половина сферы скрыта */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1100px;
-  height: 1100px;
-  background-color: rgba(255, 255, 255, 0.5);
+  width: 8px;
+  height: 8px;
+  background: white;
   border-radius: 50%;
-  filter: blur(624px);
-  opacity: 0.5;
+}
+
+.top-left {
+  top: -5px;
+  left: -5px;
+}
+
+.top-right {
+  top: -5px;
+  right: -5px;
+}
+
+.bottom-left {
+  bottom: -5px;
+  left: -5px;
+}
+
+.bottom-right {
+  bottom: -5px;
+  right: -5px;
+}
+
+.welcome-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-description-container {
+  display: flex;
+  justify-content: center;
+}
+
+.welcome-description-flex {
+  max-width: 736px;
+  max-height: 84px;
+}
+
+.welcome-description-text {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.button-discover-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 56px;
+}
+
+.button-discover {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  height: 52px;
+  width: 234px;
+  border-radius: 55px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  gap: 16px;
+}
+
+.button-discover:hover {
+  background-color: white;
+  cursor: pointer;
+  color: black;
+  fill: black;
 }
