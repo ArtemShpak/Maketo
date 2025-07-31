@@ -58,6 +58,7 @@ ul a {
   background: #FFFFFF;
   border-radius: 55px;
   border: none;
+  padding: 14px 34px;
 }
 
 .logoContainer {
@@ -76,4 +77,11 @@ ul a {
   border: 1px solid rgba(255, 255, 255, 0.2);
   margin-bottom: 0;
 }
+
+.authButton:hover {
+  background-color: rgba(222, 222, 222, 1);
+  cursor: pointer;
+}
+
+
 
