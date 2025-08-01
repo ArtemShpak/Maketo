@@ -1,86 +1,65 @@
-* {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 300;
-  font-size: 14px;
-}
+/* Header */
 
-header {
-  background-color: #000;
+.header-wrapper {
+  max-width: 1440px;
   max-height: 73px;
-  height: 73px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-nav {
-  margin: 16px auto;
-  max-width: 1308px;
-  height: 41px;
+  margin: 0 auto;
   display: flex;
-  width: 100%;
-}
-
-ul {
-  display: flex;
-  list-style: none;
-  align-items: center;
-  width: 100%;
-  gap: 215px;
-}
-
-ul a {
-  color: #FFFFFF;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.leftLinks {
-  display: flex;
-  gap: 24px;
-}
-
-
-.rightLinks {
-  display: flex;
-  gap: 24px;
-  align-items: center;
-}
-
-.authButton {
-  font-weight: 500;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
   font-size: 16px;
-  width: 160px;
-  height: 52px;
-  color: #000000;
-  background: #FFFFFF;
-  border-radius: 55px;
-  border: none;
-  padding: 14px 34px;
 }
 
-.logoContainer {
-  display: flex;
-  align-items: center;
-  gap: 15px
-}
-
-.name {
-  font-family: 'Manrope', sans-serif;
-  font-weight: 500;
-  font-size: 22px;
-}
-
-.divider {
+.header__divider {
   border: 1px solid rgba(255, 255, 255, 0.2);
   margin-bottom: 0;
 }
 
-.authButton:hover {
-  background-color: rgba(222, 222, 222, 1);
-  cursor: pointer;
+/* Menu */
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 170px;
+}
+
+.menu__item {
+  display: flex;
+  gap: 34px;
+  align-items: center;
+}
+
+.menu__item--logo {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.menu__link {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.menu__logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.menu__button--sign-in {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  width: 160px;
+  /*height: 120%;*/
+  color: #000000;
+  background: #FFFFFF;
+  border-radius: 55px;
+  border: none;
+  padding: 12px 32px;
 }
 
 

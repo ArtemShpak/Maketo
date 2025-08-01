@@ -1,28 +1,22 @@
-<header>
-  <nav>
-    <ul>
-      <li>
-        <div class="leftLinks">
-          <a routerLink="/maketo/about">About</a>
-          <a routerLink="/maketo/technologies">Technologies</a>
-          <a routerLink="/maketo/products">Products</a>
-          <a routerLink="/maketo/discover">Discover</a>
-        </div>
+<header class="header">
+  <nav class="header-wrapper">
+    <ul class="menu">
+      <li class="menu__item menu__item--left">
+        <a class="menu__link" routerLink="/maketo/about">About</a>
+        <a class="menu__link" routerLink="/maketo/technologies">Technologies</a>
+        <a class="menu__link" routerLink="/maketo/products">Products</a>
+        <a class="menu__link" routerLink="/maketo/discover">Discover</a>
       </li>
-    <li>
-      <div class="logoContainer">
-        <img ngSrc="/assets/icons/MainIcon.svg" alt="Logo" class="logo" height="25" width="30">
-        <a class="name">Maketo AI</a>
-      </div>
-    </li>
-    <li>
-      <div class="rightLinks">
-        <a routerLink="maketo/pricing">Pricing</a>
-        <a routerLink="/maketo/login">Log in</a>
-        <button class="authButton signInButton" routerLink="/maketo/register">Get Started</button>
-      </div>
-    </li>
+      <li class="menu__item menu__item--logo">
+        <img class="menu__logo-img" ngSrc="/assets/icons/MainIcon.svg" alt="Logo" height="25" width="30">
+        <a class="menu__link menu__logo-name">Maketo AI</a>
+      </li>
+      <li class="menu__item menu__item--right">
+        <a class="menu__link" routerLink="maketo/pricing">Pricing</a>
+        <a class="menu__link" routerLink="/maketo/login">Log in</a>
+        <button class="menu__button--sign-in" routerLink="/maketo/register">Get Started</button>
+      </li>
     </ul>
   </nav>
-  <div class="divider"></div>
+  <div class="header__divider"></div>
 </header>
