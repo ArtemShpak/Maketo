@@ -9,7 +9,7 @@ import {NgOptimizedImage} from '@angular/common';
     NgOptimizedImage
   ],
   templateUrl: './page-menu-component.html',
-  styleUrl: './page-menu-component.css'
+  styleUrls: ['./page-menu-component.css', '../../../styles/theme.css']
 })
 export class PageMenuComponent {
 
