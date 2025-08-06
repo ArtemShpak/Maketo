@@ -1,81 +1,31 @@
-.sphere-container {
+.icon-svg {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+  transition: left 0.5s, top 0.5s;
   pointer-events: none;
 }
 
 .white-blurred-sphere {
+  width: 60vw;
+  aspect-ratio: 1 / 1;
   position: absolute;
-  top: 400px;
+  top: -40vw; /* половина высоты сферы — чтобы выглядывала сверху */
   left: 50%;
   transform: translateX(-50%);
-  width: 1100px;
-  height: 1100px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background: radial-gradient(circle, rgba(255,255,255,0.7) 60%, rgba(255,255,255,0.2) 100%);
   border-radius: 50%;
-  filter: blur(624px);
-  opacity: 0.5;
-}
-
-.icons {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1;
+  filter: blur(8vw);
   pointer-events: none;
+  opacity: 0.6;
+  z-index: 1;
 }
 
-.icon {
-  position: absolute;
-  width: 20px;
-  opacity: 0.7;
-}
+@media (max-width: 1200px)
+{
+  .icons {
+    display: none;
+  }
 
-/* Позиції */
-.icon-top-left     { top: -60px;  left: 164px; }
-.icon-top-center {
-  height: 41px;
-  width: 41px;
-  top: -20px;
-  left: 700px;
-  transform: translateX(-50%);
-}
-
-.icon-top-right {
-  height: 30px;
-  width: 30px;
-  top: 30px;
-  right: 400px;
-}
-.icon-left {
-  height: 25px;
-  width: 25px;
-  top: 50%;
-  left: 500px;
-  transform: translateY(-50%);
-}
-.icon-right {
-  height: 35px;
-  width: 35px;
-  top: 50%;
-  right: 30px;
-  transform: translateY(-50%);
-}
-
-.icon-bottom-left  {
-  height: 26px;
-  width: 26px;
-  bottom: 20px;
-  left: 250px;
-}
-.icon-bottom-right {
-  height: 25px;
-  width: 25px;
-  bottom: 0px;
-  right: 250px;
+  .white-blurred-sphere {
+    top: -30vw; /* половина высоты сферы — чтобы выглядывала сверху */
+  }
 }

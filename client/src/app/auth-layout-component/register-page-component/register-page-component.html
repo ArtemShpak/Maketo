@@ -1,33 +1,25 @@
-<div class="form-container">
-  <div class="upper-text">
-    <h1 class="header">
-      Register
-    </h1>
-    <span class="sub-header-line upper-sub-header-line">By continue, you agree to the</span><br/>
-    <span class="sub-header-line lower-sub-header-line"><u>Therms of Use</u> and <u>Privacy Policy</u></span>
-  </div>
-  <form class="input-fields">
-    <div class="input-field" id="name">
-      <label for="name">Name</label>
-      <div class="input-gradient-border">
-      <input type="text" id="name" name="name" placeholder="Enter your name" required>
-      </div>
+<div class="register">
+  <h1 class="register__header">Register</h1>
+  <span class="register__sub-header register__sub-header--upper">
+    By continue, you agree to the
+  </span><br/>
+  <span class="register__sub-header register__sub-header--lower">
+    <u>Therms of Use</u> and <u>Privacy Policy</u>
+  </span>
+  <form class="register__form">
+    <div class="register__field" id="name">
+      <label for="name" class="register__label">Name</label>
+      <input type="text" id="name" name="name" class="register__input" placeholder="Enter your name" required>
     </div>
-    <div class="input-field" id="email">
-      <label for="email">Email</label>
-      <div class="input-gradient-border">
-      <input type="email" id="email" name="email" placeholder="Enter your email" required>
-      </div>
+    <div class="register__field" id="email">
+      <label for="email" class="register__label">Email</label>
+      <input type="email" id="email" name="email" class="register__input" placeholder="Enter your email" required>
     </div>
-    <div class="input-field" id="password">
-      <label for="password">Password</label>
-      <div class="input-gradient-border">
-      <input type="password" id="password" name="password" placeholder="Enter your password" required>
-      </div>
+    <div class="register__field" id="password">
+      <label for="password" class="register__label">Password</label>
+      <input type="password" id="password" name="password" class="register__input" placeholder="Enter your password" required>
     </div>
+    <button class="register__button">Register</button>
+    <button class="register__button">Continue with Google</button>
   </form>
-  <div class="auth-buttons">
-    <button class="register-button">Register</button>
-    <button class="register-button">Continue with Google</button>
-  </div>
 </div>

@@ -1,4 +1,34 @@
 :root {
+
+  /* Menu size */
+  --max-menu-height: 73px;
+  --max-menu-width: 1536px;
+
+  /* Background variables */
   --color-bg: #000000;
-  --color-text: #FFFFFF;
+
+  /* Text color variables*/
+  --text-color: #FFFFFF;
+  --text-color-hover: #000000;
+  --text-invertion-color: #000000;
+
+  /* Button variables */
+  --button-bg: #FFFFFF;
+  --button-dot-color: #FFFFFF;
+  --button-stroke-color: #FFFFFF;
+  --button-font-size: calc(14px + 0.2vw);
+
+  /* Icons variables */
+  --icon-color: #FFFFFF;
+  --icon-color-hover: #000000;
+
+  /* Font size */
+  --font-size-header: clamp(35px, 3.8vw, 64px);
+  --font-size-default: clamp(14px, 3vw, 16px);
+
+  /* Gap size */
+  --header-gap-top: clamp(130px, 15vw, 260px);
+  --header-gap--bottom: clamp(var(--font-size-default), 3vh, calc(var(--font-size-default) * 2));
+  --button-gap-bottom: clamp(137px, 10vh, 293px)
 }
+
