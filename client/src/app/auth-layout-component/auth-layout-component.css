@@ -1,29 +1,54 @@
-:host {
-  overflow: hidden;
-  display: block;
-  height: 100vh;
-  width: 100vw;
+/*:host {*/
+/*  overflow: hidden;*/
+/*  display: block;*/
+/*  height: 100vh;*/
+/*  width: 100vw;*/
+/*  position: relative;*/
+/*}*/
+
+/*.form-container {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*}*/
+
+/*.form {*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  background: url('/assets/Gradients/AuthFormGradient.png') no-repeat center center;*/
+/*  background-size: cover;*/
+/*  width: 640px;*/
+/*  height: 100%;*/
+/*  z-index: 1;*/
+/*}*/
+
+/*@media (max-width: 1536px){*/
+/*  .form {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    background: url('/assets/Gradients/AuthFormGradient.png') no-repeat center center;*/
+/*    background-size: cover;*/
+/*    width: 512px;*/
+/*    height: 100%;*/
+/*    z-index: 1;*/
+/*  }*/
+/*}*/
+
+.auth-layout {
   position: relative;
-}
-
-.form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.form {
-  display: flex;
-  justify-content: center;
-  background: url('/assets/Gradients/AuthFormGradient.png') no-repeat center center;
-  background-size: cover;
-  width: 640px;
-  height: 100%;
   z-index: 1;
 }
 
-.white-blurred-sphere {
+.auth-layout__form {
+  margin: 0 auto;
+  max-width: 593px;
+  height: 100vh;
+  background: url('/assets/Gradients/AuthFormGradient.png') no-repeat center center;
+  background-size: cover;
+}
+
+.auth-layout__sphere {
   position: absolute;
   top: 550px;
   left: 50%;
@@ -34,16 +59,4 @@
   border-radius: 50%;
   filter: blur(624px);
   opacity: 0.5;
-}
-
-@media (max-width: 1536px){
-  .form {
-    display: flex;
-    justify-content: center;
-    background: url('/assets/Gradients/AuthFormGradient.png') no-repeat center center;
-    background-size: cover;
-    width: 512px;
-    height: 100%;
-    z-index: 1;
-  }
 }

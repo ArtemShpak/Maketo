@@ -1,205 +1,219 @@
-.form-container {
+/*.form-container {*/
+/*  font-family: 'Manrope', sans-serif;*/
+/*  height: 100vh;*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  flex-direction: column;*/
+/*  gap: 64px;*/
+/*}*/
+
+/*.upper-text {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  flex-direction: column;*/
+/*}*/
+
+/*.header {*/
+/*  font-family: 'Manrope', sans-serif;*/
+/*  color: white;*/
+/*  font-size: 60px;*/
+/*  font-weight: 500;*/
+/*  margin-bottom: 30px;*/
+/*}*/
+
+/*.sub-header-line {*/
+/*  align-items: center;*/
+/*  font-family: 'Manrope', sans-serif;*/
+/*  color: white;*/
+/*  line-height: 22px;*/
+/*  font-size: 20px;*/
+/*  font-weight: 400;*/
+/*  display: inline-block;*/
+/*  width: 302px;*/
+/*  text-align: center;*/
+/*}*/
+
+/*.lower-sub-header-line {*/
+/*  letter-spacing: 0.3px;*/
+/*}*/
+
+/*#name {*/
+/*  position: relative*/
+/*}*/
+
+/*#email {*/
+/*  position: relative;*/
+/*}*/
+
+/*#password {*/
+/*  position: relative;*/
+/*}*/
+
+/*.upper-sub-header-line {*/
+/*  letter-spacing: 1.1px;*/
+/*}*/
+
+/*.input-fields {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  gap: 67px;*/
+/*}*/
+
+/*label {*/
+/*  font-family: 'Manrope', sans-serif;*/
+/*  font-size: 22px;*/
+/*  color: #7C7C7C;*/
+/*  position: absolute;*/
+/*  top: -38px;*/
+/*}*/
+
+/*.input-gradient-border {*/
+/*  position: relative;*/
+/*  border-radius: 15px;*/
+/*  padding: 1.5px;*/
+/*  background: linear-gradient(90deg, #CDCDCD 0%, #1E1E1E 100%);*/
+/*  width: 448px;*/
+/*  height: 51px;*/
+/*  box-sizing: border-box;*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*}*/
+
+/*.input-gradient-border input {*/
+/*  width: 100%;*/
+/*  height: 100%;*/
+/*  border: none;*/
+/*  outline: none;*/
+/*  background: url('/assets/Gradients/ButtonGradient.png') no-repeat center center;*/
+/*  color: white;*/
+/*  font-size: 18px;*/
+/*  border-radius: 15px; !* чуть меньше радиус *!*/
+/*  padding: 10px 24px;*/
+/*  box-sizing: border-box;*/
+/*}*/
+
+/*.auth-buttons {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  flex-direction: column;*/
+/*  gap: 24px;*/
+/*}*/
+
+/*.register-button {*/
+/*  font-size: 20px;*/
+/*  font-weight: 400;*/
+/*  width: 448px;*/
+/*  height: 50px;*/
+/*  border: none;*/
+/*  border-radius: 10px;*/
+/*}*/
+
+/*@media (max-width: 1536px) {*/
+
+/*  .form-container {*/
+/*    font-family: 'Manrope', sans-serif;*/
+/*    height: 100vh;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    flex-direction: column;*/
+/*    gap: 57px;*/
+/*  }*/
+
+/*  .input-fields {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    gap: 47px;*/
+/*  }*/
+
+/*  .header {*/
+/*    font-family: 'Manrope', sans-serif;*/
+/*    color: white;*/
+/*    font-size: 50px;*/
+/*    font-weight: 500;*/
+/*    margin-bottom: 30px;*/
+/*  }*/
+
+/*  .sub-header-line {*/
+/*    font-size: 15px;*/
+/*  }*/
+
+/*  label {*/
+/*    font-family: 'Manrope', sans-serif;*/
+/*    font-size: 15px;*/
+/*    color: #7C7C7C;*/
+/*    position: absolute;*/
+/*    top: -33px;*/
+/*  }*/
+
+/*  .input-gradient-border {*/
+/*    position: relative;*/
+/*    border-radius: 15px;*/
+/*    padding: 1.5px;*/
+/*    background: linear-gradient(90deg, #CDCDCD 0%, #1E1E1E 100%);*/
+/*    width: 400px;*/
+/*    height: 41px;*/
+/*    box-sizing: border-box;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*  }*/
+
+/*  .input-gradient-border input {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    border: none;*/
+/*    outline: none;*/
+/*    background: url('/assets/Gradients/ButtonGradient.png') no-repeat center center;*/
+/*    color: white;*/
+/*    font-size: 18px;*/
+/*    border-radius: 15px;*/
+/*    padding: 10px 24px;*/
+/*    box-sizing: border-box;*/
+/*  }*/
+
+/*  input::placeholder {*/
+/*    color: #7C7C7C;*/
+/*    font-family: 'Manrope', sans-serif;*/
+/*    font-size: 13px;*/
+/*  }*/
+
+/*  .auth-buttons {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    flex-direction: column;*/
+/*    gap: 24px;*/
+/*  }*/
+
+/*  .register-button {*/
+/*    font-size: 16px;*/
+/*    font-weight: 400;*/
+/*    width: 400px;*/
+/*    height: 41px;*/
+/*    border: none;*/
+/*    border-radius: 10px;*/
+/*  }*/
+/*}*/
+
+.register {
   font-family: 'Manrope', sans-serif;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 64px;
-}
-
-.upper-text {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.header {
-  font-family: 'Manrope', sans-serif;
-  color: white;
-  font-size: 60px;
-  font-weight: 500;
-  margin-bottom: 30px;
-}
-
-.sub-header-line {
-  align-items: center;
-  font-family: 'Manrope', sans-serif;
-  color: white;
-  line-height: 22px;
-  font-size: 20px;
-  font-weight: 400;
-  display: inline-block;
-  width: 302px;
-  text-align: center;
-}
-
-.lower-sub-header-line {
-  letter-spacing: 0.3px;
-}
-
-#name {
-  position: relative
-}
-
-#email {
-  position: relative;
-}
-
-#password {
-  position: relative;
-}
-
-.upper-sub-header-line {
-  letter-spacing: 1.1px;
-}
-
-.input-fields {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 67px;
-}
-
-label {
-  font-family: 'Manrope', sans-serif;
-  font-size: 22px;
-  color: #7C7C7C;
-  position: absolute;
-  top: -38px;
-}
-
-.input-gradient-border {
-  position: relative;
-  border-radius: 15px;
-  padding: 1.5px;
-  background: linear-gradient(90deg, #CDCDCD 0%, #1E1E1E 100%);
-  width: 448px;
-  height: 51px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-}
-
-.input-gradient-border input {
   width: 100%;
-  height: 100%;
-  border: none;
-  outline: none;
-  background: url('/assets/Gradients/ButtonGradient.png') no-repeat center center;
-  color: white;
-  font-size: 18px;
-  border-radius: 15px; /* чуть меньше радиус */
-  padding: 10px 24px;
-  box-sizing: border-box;
-}
-
-.auth-buttons {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  gap: 24px;
 }
 
-.register-button {
-  font-size: 20px;
-  font-weight: 400;
-  width: 448px;
-  height: 50px;
-  border: none;
-  border-radius: 10px;
+.register__header{
+  color: var(--text-color);
+  font-size: var(--font-size-header);
 }
 
-@media (max-width: 1536px) {
-
-  .form-container {
-    font-family: 'Manrope', sans-serif;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 57px;
-  }
-
-  .input-fields {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 47px;
-  }
-
-  .header {
-    font-family: 'Manrope', sans-serif;
-    color: white;
-    font-size: 50px;
-    font-weight: 500;
-    margin-bottom: 30px;
-  }
-
-  .sub-header-line {
-    font-size: 15px;
-  }
-
-  label {
-    font-family: 'Manrope', sans-serif;
-    font-size: 15px;
-    color: #7C7C7C;
-    position: absolute;
-    top: -33px;
-  }
-
-  .input-gradient-border {
-    position: relative;
-    border-radius: 15px;
-    padding: 1.5px;
-    background: linear-gradient(90deg, #CDCDCD 0%, #1E1E1E 100%);
-    width: 400px;
-    height: 41px;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-  }
-
-  .input-gradient-border input {
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
-    background: url('/assets/Gradients/ButtonGradient.png') no-repeat center center;
-    color: white;
-    font-size: 18px;
-    border-radius: 15px;
-    padding: 10px 24px;
-    box-sizing: border-box;
-  }
-
-  input::placeholder {
-    color: #7C7C7C;
-    font-family: 'Manrope', sans-serif;
-    font-size: 13px;
-  }
-
-  .auth-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .register-button {
-    font-size: 16px;
-    font-weight: 400;
-    width: 400px;
-    height: 41px;
-    border: none;
-    border-radius: 10px;
-  }
-
-}
 
