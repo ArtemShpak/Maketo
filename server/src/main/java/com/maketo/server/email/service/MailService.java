@@ -4,7 +4,7 @@ import com.maketo.server.email.builder.EmailBuilder;
 import com.maketo.server.email.enums.EmailEnum;
 import com.maketo.server.email.model.IEmailInterface;
 import com.maketo.server.email.template.EmailTemplateBuilder;
-import com.maketo.server.security.entity.UserInfo;
+import com.maketo.server.domain.user.model.UserInfo;
 import jakarta.mail.MessagingException;
 import org.springframework.stereotype.Service;
 
