@@ -1,6 +1,5 @@
 package com.maketo.server.auth.config;
 
-import com.maketo.server.adapter.in.filter.JwtAuthFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -36,10 +35,7 @@ public class SecurityConfig {
                .csrf(AbstractHttpConfigurer::disable)
                .authorizeHttpRequests(auth -> auth
 
-                       .requestMatchers("/auth/welcome", "/auth/addNewUser", "/auth/verifyEmail", "/auth/login").permitAll()
-
-                       .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
-
+                       .requestMatchers("/api/v1/auth/register", "/api/v1/auth/login", "/api/v1/auth/test").permitAll()
                        .anyRequest().authenticated()
                )
 

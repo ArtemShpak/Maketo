@@ -5,11 +5,11 @@ import com.maketo.server.auth.domain.user.UserInfo;
 import com.maketo.server.auth.infrastructure.persistance.jpa.SpringDataUserInfoJpaRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@Component
+@Repository
 public class UserInfoRepositoryAdapter implements UserInfoRepositoryPort {
 
     private final SpringDataUserInfoJpaRepository userRepository;
@@ -44,4 +44,5 @@ public class UserInfoRepositoryAdapter implements UserInfoRepositoryPort {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
         return findByEmail(email);
     }
+
 }
