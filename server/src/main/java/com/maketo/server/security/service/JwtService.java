@@ -20,28 +20,10 @@ public class JwtService {
     @Value("${jwt.secret}")
     private String SECRET;
 
-    // Генерація токена, як у першому варіанті — 30 хвилин життя токена
-
-
     // Витягування username (email) із токена
     public String extractUsername(String token) throws ParseException {
         SignedJWT signedJWT = SignedJWT.parse(token);
         return signedJWT.getJWTClaimsSet().getSubject();
     }
 
-    // Перевірка чи токен валідний: перевірка підпису, терміну дії, і співпадіння username
-    public boolean validateToken(String token, UserDetails userDetails) {
-        try {
-            SignedJWT signedJWT = SignedJWT.parse(token);
-            JWSVerifier verifier = new MACVerifier(SECRET);
-
-            boolean signatureValid = signedJWT.verify(verifier);
-            boolean notExpired = new Date().before(signedJWT.getJWTClaimsSet().getExpirationTime());
-            String usernameInToken = signedJWT.getJWTClaimsSet().getSubject();
-
-            return signatureValid && notExpired && usernameInToken.equals(userDetails.getUsername());
-        } catch (Exception e) {
-            return false;
-        }
-    }
 }

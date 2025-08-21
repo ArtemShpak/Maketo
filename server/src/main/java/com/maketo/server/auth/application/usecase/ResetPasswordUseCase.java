@@ -1,7 +1,6 @@
 package com.maketo.server.auth.application.usecase;
 
 import com.maketo.server.auth.application.port.in.ResetPasswordPort;
-import com.maketo.server.auth.domain.data.ResetPasswordData;
 import com.maketo.server.auth.application.dto.ResetPasswordResult;
 
 public class ResetPasswordUseCase implements ResetPasswordPort {
