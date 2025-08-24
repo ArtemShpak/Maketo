@@ -1,0 +1,30 @@
+.icon-svg {
+  position: absolute;
+  pointer-events: none;
+}
+
+.white-blurred-sphere {
+  width: 60vw;
+  aspect-ratio: 1 / 1;
+  position: absolute;
+  top: -40vw;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-sphere);
+  border-radius: 50%;
+  filter: blur(20vw);
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 1;
+}
+
+@media (max-width: 1200px)
+{
+  .icons {
+    display: none;
+  }
+
+  .white-blurred-sphere {
+    top: -30vw;
+  }
+}
