@@ -1,34 +1,39 @@
 :root {
+  /* Font size */
+  --font-size-12: 12px;
+  --font-size-14: 14px;
+  --font-size-16: 16px;
+  --font-size-19: 19px;
+  --font-size-22: 22px;
+  --font-size-35: 35px;
+  --font-size-64: 64px;
 
-  /* Menu size */
-  --max-menu-height: 73px;
-  --max-menu-width: 1536px;
+  /* Colors */
+  --color-primary: #FFFFFF;
+  --color-secondary: #000000;
+  --color-ghost: rgba(255, 255, 255, 0.6);
+  --color-sphere: radial-gradient(circle, rgba(255,255,255,0.7) 60%, rgba(255,255,255,0.2) 100%);
 
-  /* Background variables */
-  --color-bg: #000000;
-
-  /* Text color variables*/
-  --text-color: #FFFFFF;
-  --text-color-hover: #000000;
-  --text-invertion-color: #000000;
+  /* Menu variables */
+  --menu-height: 73px;
+  --menu-width: 1536px;
+  --menu-font-size: clamp(var(--font-size-12), calc(var(--font-size-12) + 0.2vw), var(--font-size-14));
+  --menu-links-gap: 24px;
 
   /* Button variables */
-  --button-bg: #FFFFFF;
-  --button-dot-color: #FFFFFF;
-  --button-stroke-color: #FFFFFF;
   --button-font-size: calc(14px + 0.2vw);
 
-  /* Icons variables */
-  --icon-color: #FFFFFF;
-  --icon-color-hover: #000000;
-
-  /* Font size */
-  --font-size-header: clamp(35px, 3.8vw, 64px);
+  /* Adaptive font size */
+  --font-size-header: clamp(35px, calc(35px + 1.55vw), 64px);
   --font-size-default: clamp(14px, 3vw, 16px);
+  --font-size-label: clamp(var(--font-size-19), calc(var(--font-size-19) + 0.2vw), var(--font-size-22));
 
   /* Gap size */
-  --header-gap-top: clamp(130px, 15vw, 260px);
+  --header-gap-top: clamp(130px, calc(130px + 4vw), 260px);
   --header-gap--bottom: clamp(var(--font-size-default), 3vh, calc(var(--font-size-default) * 2));
-  --button-gap-bottom: clamp(137px, 10vh, 293px)
+  --button-gap-bottom: clamp(137px, 10vh, 293px);
+
+  /* Border radius*/
+  --border-radius-55: 55px;
 }
 

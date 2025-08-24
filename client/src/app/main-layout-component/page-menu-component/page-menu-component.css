@@ -6,24 +6,15 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1000;
-}
-
-header__divider {
-  z-index: 1001;
+  /*z-index: 0;*/ /*If the menu disappears change value to bigger or 1000*/
 }
 
 .header-wrapper {
-  max-width: var(--max-menu-width);
-  max-height: var(--max-menu-height);
-  width: var(--max-menu-width);
-  /*background: var(--color-bg);*/
+  max-width: var(--menu-width);
+  max-height: var(--menu-height);
+  width: var(--menu-width);
   display: flex;
   justify-content: center;
-}
-
-.header__divider {
-  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* Menu */
@@ -32,17 +23,16 @@ header__divider {
   width: 100%;
   padding-left: 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  gap: calc((100% - 901px) / 2);
 }
 
 .menu__item {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: var(--font-size-default);
+  font-size: var(--menu-font-size);
   display: flex;
-  gap: 24px;
+  gap: var(--menu-links-gap);
   align-items: center;
 }
 
@@ -56,17 +46,13 @@ header__divider {
 .menu__link {
   white-space: nowrap;
   text-decoration: none;
-  color: var(--text-color);
+  color: var(--color-primary);
   margin: 0;
 }
 
-.menu__logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
+.menu__link:not(.menu__logo-na):hover {
+  color: var(--color-ghost);
 }
-
 
 .menu__item--left {
   max-width: 328px;
@@ -75,28 +61,28 @@ header__divider {
 .menu__button--sign-in {
   white-space: nowrap;
   font-family: 'Poppins', sans-serif;
-  font-size: var(--font-size-default);
+  font-size: var(--menu-font-size);
   font-weight: 400;
   width: 160px;
-  color: var(--text-invertion-color);
-  background: var(--button-bg);
-  border-radius: 55px;
+  color: var(--color-secondary);
+  background: var(--color-primary);
+  border-radius: var(--border-radius-55);
   border: none;
-  padding: 12px 32px;
+  padding: 1em 2.6em;
+  cursor: pointer;
+}
+
+.menu__button--sign-in:hover {
+  background: var(--color-ghost);
 }
 
 .menu__item--burger-menu {
   display: none;
 }
 
-.menu__burger--button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
 .menu__logo-name {
   font-size: calc(var(--font-size-default) + 2px);
+  cursor: default;
 }
 
 @media (max-width: 960px) {
