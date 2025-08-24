@@ -1,0 +1,148 @@
+/* Header */
+
+.header {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  /*z-index: 0;*/ /*If the menu disappears change value to bigger or 1000*/
+}
+
+.header-wrapper {
+  max-width: var(--menu-width);
+  max-height: var(--menu-height);
+  width: var(--menu-width);
+  display: flex;
+  justify-content: center;
+}
+
+/* Menu */
+
+.menu {
+  width: 100%;
+  padding-left: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.menu__item {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: var(--menu-font-size);
+  display: flex;
+  gap: var(--menu-links-gap);
+  align-items: center;
+}
+
+.menu__item--logo {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.menu__link {
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.menu__link:not(.menu__logo-na):hover {
+  color: var(--color-ghost);
+}
+
+.menu__item--left {
+  max-width: 328px;
+}
+
+.menu__button--sign-in {
+  white-space: nowrap;
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--menu-font-size);
+  font-weight: 400;
+  width: 160px;
+  color: var(--color-secondary);
+  background: var(--color-primary);
+  border-radius: var(--border-radius-55);
+  border: none;
+  padding: 1em 2.6em;
+  cursor: pointer;
+}
+
+.menu__button--sign-in:hover {
+  background: var(--color-ghost);
+}
+
+.menu__item--burger-menu {
+  display: none;
+}
+
+.menu__logo-name {
+  font-size: calc(var(--font-size-default) + 2px);
+  cursor: default;
+}
+
+@media (max-width: 960px) {
+  .menu__item--left,
+  .menu__item--right {
+    display: none;
+  }
+
+  .menu__item--burger-menu {
+    display: block;
+    margin-right: 20px;
+    margin-top: 10px;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+  }
+
+  .menu__item--logo {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 20px;
+    flex: 1 1 auto;
+    position: relative;
+    justify-content: center;
+  }
+
+  .menu__logo-img {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-30%);
+    height: 25px;
+    width: 30px;
+  }
+
+  .menu__logo-name {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -30%);
+    white-space: nowrap;
+    font-weight: 500;
+    pointer-events: none;
+  }
+
+  .menu__item--burger-menu {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-40%);
+    display: block;
+  }
+}
+
+
+
+
+

@@ -1,0 +1,24 @@
+<header class="header">
+  <nav class="header-wrapper">
+    <ul class="menu">
+      <li class="menu__item menu__item--left">
+        <a class="menu__link" routerLink="/maketo/about">About</a>
+        <a class="menu__link" routerLink="/maketo/technologies">Technologies</a>
+        <a class="menu__link" routerLink="/maketo/products">Products</a>
+        <a class="menu__link" routerLink="/maketo/discover">Discover</a>
+      </li>
+      <li class="menu__item menu__item--logo">
+        <img class="menu__logo-img" ngSrc="/assets/icons/MainIcon.svg" alt="Logo" height="25" width="30">
+        <a class="menu__link menu__logo-name">Maketo AI</a>
+      </li>
+      <li class="menu__item menu__item--right">
+        <a class="menu__link" routerLink="/maketo/pricing">Pricing</a>
+        <a class="menu__link" routerLink="/maketo/login">Log in</a>
+        <button class="menu__button--sign-in" routerLink="/maketo/register">Get Started</button>
+      </li>
+      <li class="menu__item menu__item--burger-menu">
+        <app-burger-menu-component></app-burger-menu-component>
+      </li>
+    </ul>
+  </nav>
+</header>

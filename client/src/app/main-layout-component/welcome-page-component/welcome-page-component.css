@@ -1,0 +1,107 @@
+.welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Manrope', sans-serif;
+  font-size: var(--font-size-default);
+  font-weight: 500;
+}
+
+.welcome__title {
+  margin-top: var(--header-gap-top);
+  margin-bottom: var(--header-gap--bottom);
+  font-weight: 500;
+  font-size: var(--font-size-header);
+  color: var(--color-primary);
+  max-width: 675px;
+  text-align: center;
+}
+
+.welcome__build-wrapper {
+  display: inline-flex;
+  justify-content: center;
+  margin-left: 2px;
+  vertical-align: middle;
+}
+
+.welcome__dashed-box {
+  font-size: var(--font-size-header);
+  transform: rotate(-4deg);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 180px;
+  line-height: 100%;
+  border: 2px dashed var(--color-primary);
+  color: var(--color-primary);
+  text-align: center;
+  padding: 5px 10px;
+}
+
+.welcome__dashed-box-corner-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 50%;
+}
+
+.welcome__dashed-box-corner-dot--top-left {
+  top: -5px;
+  left: -5px;
+}
+
+.welcome__dashed-box-corner-dot--top-right {
+  top: -5px;
+  right: -5px;
+}
+
+.welcome__dashed-box-corner-dot--bottom-left {
+  bottom: -5px;
+  left: -5px;
+}
+
+.welcome__dashed-box-corner-dot--bottom-right {
+  bottom: -5px;
+  right: -5px;
+}
+
+.welcome__description-text {
+  font-weight: 400;
+  color: var(--color-ghost);
+  max-width: 736px;
+  text-align: center;
+  margin:0 2em 0 2em;
+}
+
+.welcome__button-discover {
+  font-size: var(--font-size-default);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-primary);
+  height: 52px;
+  width: 234px;
+  border-radius: 55px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  gap: 16px;
+  margin: 5em auto var(--button-gap-bottom) auto;
+  background: transparent;
+  transition: background 0.2s, color 0.2s, fill 0.2s;
+}
+
+.welcome__button-discover:hover {
+  background-color: var(--color-primary);
+  cursor: pointer;
+  color: var(--color-secondary);
+  fill: var(--color-secondary);
+}
+
+.welcome__magic-wand-icon {
+  display: inline-block;
+}
+
