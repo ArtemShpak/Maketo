@@ -1,6 +1,5 @@
 .icon-svg {
   position: absolute;
-  transition: left 0.5s, top 0.5s;
   pointer-events: none;
 }
 
@@ -8,12 +7,12 @@
   width: 60vw;
   aspect-ratio: 1 / 1;
   position: absolute;
-  top: -40vw; /* половина высоты сферы — чтобы выглядывала сверху */
+  top: -40vw;
   left: 50%;
   transform: translateX(-50%);
-  background: radial-gradient(circle, rgba(255,255,255,0.7) 60%, rgba(255,255,255,0.2) 100%);
+  background: var(--color-sphere);
   border-radius: 50%;
-  filter: blur(8vw);
+  filter: blur(20vw);
   pointer-events: none;
   opacity: 0.6;
   z-index: 1;
@@ -26,6 +25,6 @@
   }
 
   .white-blurred-sphere {
-    top: -30vw; /* половина высоты сферы — чтобы выглядывала сверху */
+    top: -30vw;
   }
 }
