@@ -7,13 +7,64 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="server" />
+        <module name="email-shared" />
+        <module name="shared" />
+        <module name="authentication-microservice" />
+        <module name="registration-spi" />
+        <module name="authentication-spi" />
+        <module name="password-management-spi-adapter" />
+        <module name="email-spi-adapter" />
+        <module name="authentication-api" />
+        <module name="password-management-core" />
+        <module name="registration-api" />
+        <module name="registration-spi-adapter" />
+        <module name="auth-persistence" />
+        <module name="registration-microservice" />
+        <module name="email-core" />
+        <module name="authentication-spi-adapter" />
+        <module name="user-management" />
+        <module name="in-app" />
+        <module name="email-spi" />
+        <module name="password-management-api" />
+        <module name="registration-core" />
+        <module name="authentication-core" />
+        <module name="email-microservice" />
+        <module name="auth-shared" />
+        <module name="email-api" />
+        <module name="auth-microservice" />
+        <module name="password-management-spi" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="server" options="-parameters" />
+      <module name="auth-microservice" options="-parameters" />
+      <module name="auth-persistence" options="-parameters" />
+      <module name="auth-shared" options="-parameters" />
+      <module name="authentication-api" options="-parameters" />
+      <module name="authentication-core" options="-parameters" />
+      <module name="authentication-microservice" options="-parameters" />
+      <module name="authentication-spi" options="-parameters" />
+      <module name="authentication-spi-adapter" options="-parameters" />
+      <module name="email-api" options="-parameters" />
+      <module name="email-core" options="-parameters" />
+      <module name="email-microservice" options="-parameters" />
+      <module name="email-shared" options="-parameters" />
+      <module name="email-spi" options="-parameters" />
+      <module name="email-spi-adapter" options="-parameters" />
+      <module name="in-app" options="-parameters" />
+      <module name="password-management-api" options="-parameters" />
+      <module name="password-management-core" options="-parameters" />
+      <module name="password-management-spi" options="-parameters" />
+      <module name="password-management-spi-adapter" options="-parameters" />
+      <module name="registration-api" options="-parameters" />
+      <module name="registration-core" options="-parameters" />
+      <module name="registration-microservice" options="-parameters" />
+      <module name="registration-spi" options="-parameters" />
+      <module name="registration-spi-adapter" options="-parameters" />
+      <module name="server" options="" />
+      <module name="shared" options="-parameters" />
+      <module name="user-management" options="-parameters" />
     </option>
   </component>
 </project>

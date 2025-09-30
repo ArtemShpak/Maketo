@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/server/auth/auth-microservice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/auth-persistence/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/auth-shared/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/authentication/authentication-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/authentication/authentication-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/authentication/authentication-microservice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/authentication/authentication-spi-adapter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/authentication/authentication-spi/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/authentication/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/authentication/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/password-management/password-management-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/password-management/password-management-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/password-management/password-management-spi-adapter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/password-management/password-management-spi/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/password-management/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/password-management/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/registration/registration-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/registration/registration-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/registration/registration-microservice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/registration/registration-spi-adapter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/registration/registration-spi/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/registration/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/registration/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/auth/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/notification/email/email-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/notification/email/email-core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/notification/email/email-microservice/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/notification/email/email-shared/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/notification/email/email-spi-adapter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/notification/email/email-spi/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/notification/email/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/notification/email/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/notification/in-app/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/notification/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/notification/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/shared/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/user-management/src/main/java" charset="UTF-8" />
   </component>
 </project>

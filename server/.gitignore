@@ -12,8 +12,10 @@ target/
 .settings
 .springBeans
 .sts4-cache
-src/main/resources/email.properties
-src/main/resources/jwt.properties
+notification/email/email-microservice/src/main/resources/email.yaml
+auth/auth-microservice/src/main/resources/application.properties
+auth/auth-microservice/src/main/resources/application-local.properties
+auth/auth-microservice/src/main/resources/jwt.properties
 
 
 ### IntelliJ IDEA ###
