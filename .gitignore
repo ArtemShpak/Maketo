@@ -1,0 +1,3 @@
+auth/auth-microservice/src/main/resources/application.properties
+auth/auth-microservice/src/main/resources/application-local.properties
+auth/auth-microservice/src/main/resources/jwt.properties
