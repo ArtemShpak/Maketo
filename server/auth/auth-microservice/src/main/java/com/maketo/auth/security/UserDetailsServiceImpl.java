@@ -1,6 +1,6 @@
 package com.maketo.auth.security;
 
-import com.maketo.auth.core.domain.User;
+import com.maketo.auth.spi.dto.User;
 import com.maketo.auth.spi.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final UserRepository<User> userRepository;
+    private final UserRepository userRepository;
 
-    public UserDetailsServiceImpl(UserRepository<User> userRepository) {
+    public UserDetailsServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

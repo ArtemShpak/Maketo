@@ -1,6 +1,6 @@
 package com.maketo.auth.security;
 
-import com.maketo.auth.core.domain.User;
+import com.maketo.auth.spi.dto.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

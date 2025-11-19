@@ -1,6 +1,6 @@
 package com.maketo.auth.core.mapper;
 
-import com.maketo.auth.core.domain.User;
+import com.maketo.auth.spi.dto.User;
 import com.maketo.spi.dto.UserDto;
 
 /**
@@ -23,9 +23,9 @@ public class UserMapper {
         }
 
         return new UserDto(
-                user.getName(),
-                user.getEmail(),
-                user.getActivationToken()
+//                user.get,
+//                user.getEmail(),
+//                user.getActivationToken()
         );
     }
 }

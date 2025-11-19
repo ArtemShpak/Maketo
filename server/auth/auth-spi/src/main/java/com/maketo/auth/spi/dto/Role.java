@@ -1,4 +1,4 @@
-package com.maketo.auth.core.domain;
+package com.maketo.auth.spi.dto;
 
 public enum Role {
     USER,

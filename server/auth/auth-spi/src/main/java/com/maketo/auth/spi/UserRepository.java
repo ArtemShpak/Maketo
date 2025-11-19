@@ -1,12 +1,14 @@
 package com.maketo.auth.spi;
 
+import com.maketo.auth.spi.dto.User;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@Component
-public interface UserRepository<T> {
-    Optional<T> findByEmail(String email);
-    T save(T user);
+@Repository
+public interface UserRepository {
+    Optional<User> findByEmail(String email);
+    User save(User user);
     boolean existsByEmail(String email);
 }

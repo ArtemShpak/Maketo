@@ -3,15 +3,13 @@ package com.maketo.auth.core.service;
 import com.maketo.auth.api.RegisterUseCase;
 import com.maketo.auth.api.dto.RegisterUserRequest;
 import com.maketo.auth.api.dto.RegisterUserResponse;
-import com.maketo.auth.core.domain.Role;
-import com.maketo.auth.core.domain.User;
+import com.maketo.auth.spi.dto.Role;
+import com.maketo.auth.spi.dto.User;
 import com.maketo.auth.core.exception.DuplicateEmailException;
-import com.maketo.auth.core.mapper.UserMapper;
 import com.maketo.auth.spi.JwtTokenProvider;
 import com.maketo.auth.spi.PasswordHasher;
 import com.maketo.auth.spi.UserRepository;
 import com.maketo.auth.spi.dto.TokenPurpose;
-import com.maketo.spi.SendActivationEmailSpi;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,19 +17,20 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class RegistrationService implements RegisterUseCase {
 
-    private final UserRepository<User> userRepository;
+    private final UserRepository userRepository;
     private final JwtTokenProvider jwtTokenProvider;
     private final PasswordHasher passwordHasher;
-    private final SendActivationEmailSpi sendActivationEmailSpi;
+//    private final SendActivationEmailSpi sendActivationEmailSpi;
 
-    public RegistrationService(UserRepository<User> userRepository,
+    public RegistrationService(UserRepository userRepository,
                               JwtTokenProvider jwtTokenProvider,
-                              PasswordHasher passwordHasher,
-                              SendActivationEmailSpi sendActivationEmailSpi) {
+                              PasswordHasher passwordHasher
+//                              SendActivationEmailSpi sendActivationEmailSpi
+                            ) {
         this.userRepository = userRepository;
         this.jwtTokenProvider = jwtTokenProvider;
         this.passwordHasher = passwordHasher;
-        this.sendActivationEmailSpi = sendActivationEmailSpi;
+//        this.sendActivationEmailSpi = sendActivationEmailSpi;
     }
 
     @Override
@@ -53,7 +52,7 @@ public class RegistrationService implements RegisterUseCase {
 
         userRepository.save(user);
 
-        sendActivationEmailSpi.sendEmail(UserMapper.toEmailDto(user));
+//        sendActivationEmailSpi.sendEmail(UserMapper.toEmailDto(user));
 
         return new RegisterUserResponse("User registered successfully");
     }

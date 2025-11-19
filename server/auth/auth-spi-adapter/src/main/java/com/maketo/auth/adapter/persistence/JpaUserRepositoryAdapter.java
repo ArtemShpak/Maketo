@@ -1,15 +1,15 @@
 package com.maketo.auth.adapter.persistence;
 
 import com.maketo.auth.adapter.persistence.entity.UserEntity;
-import com.maketo.auth.core.domain.Role;
-import com.maketo.auth.core.domain.User;
+import com.maketo.auth.spi.dto.Role;
+import com.maketo.auth.spi.dto.User;
 import com.maketo.auth.spi.UserRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public class JpaUserRepositoryAdapter implements UserRepository<User> {
+public class JpaUserRepositoryAdapter implements UserRepository {
 
     private final SpringDataUserRepository springDataRepository;
 

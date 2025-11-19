@@ -3,7 +3,7 @@ package com.maketo.auth.core.service;
 import com.maketo.auth.api.LoginUseCase;
 import com.maketo.auth.api.dto.LoginRequest;
 import com.maketo.auth.api.dto.TokenDto;
-import com.maketo.auth.core.domain.User;
+import com.maketo.auth.spi.dto.User;
 import com.maketo.auth.core.exception.InvalidCredentialsException;
 import com.maketo.auth.spi.JwtTokenProvider;
 import com.maketo.auth.spi.PasswordHasher;
@@ -14,11 +14,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginService implements LoginUseCase {
 
-    private final UserRepository<User> userRepository;
+    private final UserRepository userRepository;
     private final PasswordHasher passwordHasher;
     private final JwtTokenProvider jwtTokenProvider;
 
-    public LoginService(UserRepository<User> userRepository,
+    public LoginService(UserRepository userRepository,
                        PasswordHasher passwordHasher,
                        JwtTokenProvider jwtTokenProvider) {
         this.userRepository = userRepository;

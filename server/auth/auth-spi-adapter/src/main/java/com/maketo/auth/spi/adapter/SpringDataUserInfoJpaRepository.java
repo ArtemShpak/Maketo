@@ -1,5 +1,5 @@
 package com.maketo.auth.spi.adapter;
-import com.maketo.auth.core.domain.User;
+import com.maketo.auth.spi.dto.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
