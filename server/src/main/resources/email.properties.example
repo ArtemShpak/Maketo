@@ -1,5 +1,0 @@
-email.host = smtp.gmail.com
-email.port = 587
-
-email.username = example@gmail.com
-email.password = examplepassword

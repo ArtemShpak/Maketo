@@ -1,7 +1,7 @@
 package com.maketo.spi;
 
-import com.maketo.entities.UserInfo;
+import com.maketo.spi.dto.UserDto;
 
 public interface SendActivationEmailSpi {
-    void sendEmail(UserInfo userData);
+    void sendEmail(UserDto userData);
 }

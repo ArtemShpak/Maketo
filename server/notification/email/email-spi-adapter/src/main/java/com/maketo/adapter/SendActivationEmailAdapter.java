@@ -1,7 +1,7 @@
 package com.maketo.adapter;
 
-import com.maketo.entities.UserInfo;
-import com.maketo.enums.EmailEnum;
+import com.maketo.spi.dto.UserDto;
+import com.maketo.core.enums.EmailEnum;
 import com.maketo.spi.SendActivationEmailSpi;
 
 import java.util.Map;
@@ -21,7 +21,7 @@ public class SendActivationEmailAdapter implements SendActivationEmailSpi {
     }
 
     @Override
-    public void sendEmail(UserInfo userData) {
+    public void sendEmail(UserDto userData) {
         EmailEnum type = EmailEnum.VERIFY;
         Map<String, Object> vars = Map.of(
                 "name", userData.getName(),

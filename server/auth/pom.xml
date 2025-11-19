@@ -13,12 +13,11 @@
     <name>auth</name>
     <url>http://maven.apache.org</url>
     <modules>
-        <module>auth-shared</module>
-        <module>registration</module>
-        <module>authentication</module>
-        <module>auth-persistence</module>
-        <module>password-management</module>
         <module>auth-microservice</module>
+        <module>auth-api</module>
+        <module>auth-core</module>
+        <module>auth-spi</module>
+        <module>auth-spi-adapter</module>
     </modules>
 
     <properties>
