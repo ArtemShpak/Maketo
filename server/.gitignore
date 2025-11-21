@@ -12,11 +12,6 @@ target/
 .settings
 .springBeans
 .sts4-cache
-notification/email/email-microservice/src/main/resources/email.yaml
-auth/auth-microservice/src/main/resources/application.properties
-auth/auth-microservice/src/main/resources/application-local.properties
-auth/auth-microservice/src/main/resources/jwt.properties
-
 
 ### IntelliJ IDEA ###
 .idea
@@ -36,3 +31,82 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Sensitive Configuration Files ###
+# Application properties with credentials
+**/application.properties
+**/application-*.properties
+**/application.yml
+**/application-*.yml
+**/application.yaml
+**/application-*.yaml
+
+# JWT and security configuration
+**/jwt.properties
+**/jwt.yml
+**/jwt.yaml
+**/security.properties
+**/security.yml
+**/security.yaml
+
+# Database configuration
+**/database.properties
+**/database.yml
+**/database.yaml
+**/db.properties
+
+# Email configuration
+**/email.properties
+**/email.yml
+**/email.yaml
+**/smtp.properties
+
+# RabbitMQ/Messaging configuration
+**/rabbitmq.properties
+**/rabbitmq.yml
+**/rabbitmq.yaml
+**/messaging.properties
+
+# AWS and cloud credentials
+**/aws.properties
+**/aws.yml
+**/.aws/
+**/credentials
+
+# Environment files
+.env
+.env.local
+.env.*.local
+**/.env
+**/.env.local
+
+# Logs with potential sensitive data
+logs/
+*.log
+**/*.log
+
+# Secrets and keys
+**/secrets/
+**/*.key
+**/*.pem
+**/*.p12
+**/*.jks
+**/*.keystore
+**/*.truststore
+
+# Docker secrets (if using Docker)
+**/docker-compose.override.yml
+**/docker-compose.local.yml
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+### Template files to keep in Git ###
+# You can create .example or .template versions of config files to commit
+!**/application.properties.example
+!**/application.properties.template
+!**/application-*.properties.example
+!**/jwt.properties.example
+!**/email.yaml.example
+

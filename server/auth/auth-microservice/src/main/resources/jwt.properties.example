@@ -1,0 +1,7 @@
+# JWT Configuration Template
+# Copy this file to jwt.properties and fill in your actual secret key
+
+# Generate a strong secret key (at least 256 bits for HS256)
+# You can use: openssl rand -base64 64
+jwt.secret=YOUR_SECRET_KEY_HERE_MINIMUM_256_BITS
+
