@@ -35,7 +35,7 @@ public class LoginService implements LoginUseCase {
             throw new InvalidCredentialsException();
         }
 
-        String token = jwtTokenProvider.generateToken(user.getEmail(), TokenPurpose.AUTH);
+        String token = jwtTokenProvider.generateToken(user.getId(), TokenPurpose.AUTH);
         return new TokenDto(token);
     }
 }

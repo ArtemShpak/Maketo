@@ -25,12 +25,12 @@ public class JwtTokenProviderImpl implements JwtTokenProvider {
     private static final long ACCESS_TTL_MILLIS = 30 * 60 * 1000;
 
     @Override
-    public String generateToken(String email, TokenPurpose purpose) {
+    public String generateToken(UUID userId, TokenPurpose purpose) {
         try {
             Date now = new Date();
             Date exp = new Date(now.getTime() + ACCESS_TTL_MILLIS);
             JWTClaimsSet claims = new JWTClaimsSet.Builder()
-                    .subject(email)
+                    .subject(userId.toString())
                     .issueTime(now)
                     .expirationTime(exp)
                     .claim("purpose", purpose.name())

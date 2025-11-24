@@ -1,7 +1,7 @@
 package com.maketo.auth.core.mapper;
 
 import com.maketo.auth.spi.dto.User;
-import com.maketo.spi.dto.UserDto;
+import com.maketo.common.messaging.dto.UserDto;
 
 /**
  * Маппер для преобразования доменной модели User в UserDto для email-сервиса
@@ -17,15 +17,15 @@ public class UserMapper {
      * @param user доменная модель пользователя
      * @return DTO с данными для email-сервиса
      */
-    public static UserDto toEmailDto(User user) {
+    public static UserDto toEmailDto(User user, String token) {
         if (user == null) {
             return null;
         }
 
         return new UserDto(
-//                user.get,
-//                user.getEmail(),
-//                user.getActivationToken()
+                user.getName(),
+                user.getEmail(),
+                token
         );
     }
 }

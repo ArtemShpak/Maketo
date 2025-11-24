@@ -1,8 +1,11 @@
 package com.maketo.auth.core.service;
 
+import com.maketo.auth.spi.ActivationTokenRepository;
 import com.maketo.auth.api.RegisterUseCase;
 import com.maketo.auth.api.dto.RegisterUserRequest;
 import com.maketo.auth.api.dto.RegisterUserResponse;
+import com.maketo.auth.core.mapper.UserMapper;
+import com.maketo.auth.spi.NotificationPublisher;
 import com.maketo.auth.spi.dto.Role;
 import com.maketo.auth.spi.dto.User;
 import com.maketo.auth.core.exception.DuplicateEmailException;
@@ -13,24 +16,26 @@ import com.maketo.auth.spi.dto.TokenPurpose;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.SecureRandom;
+import java.util.Base64;
+
 @Service
 @Transactional
 public class RegistrationService implements RegisterUseCase {
 
     private final UserRepository userRepository;
-    private final JwtTokenProvider jwtTokenProvider;
     private final PasswordHasher passwordHasher;
-//    private final SendActivationEmailSpi sendActivationEmailSpi;
+    private final NotificationPublisher notificationPublisher;
+    private final ActivationTokenRepository activationTokenRepository;
 
     public RegistrationService(UserRepository userRepository,
-                              JwtTokenProvider jwtTokenProvider,
-                              PasswordHasher passwordHasher
-//                              SendActivationEmailSpi sendActivationEmailSpi
-                            ) {
+                               PasswordHasher passwordHasher,
+                               NotificationPublisher notificationPublisher, ActivationTokenRepository activationTokenRepository
+    ) {
         this.userRepository = userRepository;
-        this.jwtTokenProvider = jwtTokenProvider;
         this.passwordHasher = passwordHasher;
-//        this.sendActivationEmailSpi = sendActivationEmailSpi;
+        this.notificationPublisher = notificationPublisher;
+        this.activationTokenRepository = activationTokenRepository;
     }
 
     @Override
@@ -39,21 +44,29 @@ public class RegistrationService implements RegisterUseCase {
             throw new DuplicateEmailException(request.email());
         }
 
-        String token = jwtTokenProvider.generateToken(request.email(), TokenPurpose.EMAIL_VERIFICATION);
         String hashedPassword = passwordHasher.hash(request.password());
 
         User user = new User();
         user.setName(request.username());
         user.setEmail(request.email());
         user.setPassword(hashedPassword);
-        user.setActivationToken(token);
         user.setActive(false);
         user.setRole(Role.USER);
 
         userRepository.save(user);
 
-//        sendActivationEmailSpi.sendEmail(UserMapper.toEmailDto(user));
+        String token = generateToken();
+        activationTokenRepository.save(token, user.getId());
+        System.out.println(UserMapper.toEmailDto(user, token));
+        notificationPublisher.publishUserRegistrationEvent(UserMapper.toEmailDto(user, token));   //Uncomment this line to enable email notifications
 
         return new RegisterUserResponse("User registered successfully");
+    }
+
+    private String generateToken() {
+        SecureRandom random = new SecureRandom();
+        byte[] bytes = new byte[32];
+        random.nextBytes(bytes);
+        return Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
     }
 }

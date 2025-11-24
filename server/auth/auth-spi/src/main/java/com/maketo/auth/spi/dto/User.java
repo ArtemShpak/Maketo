@@ -3,6 +3,8 @@ package com.maketo.auth.spi.dto;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "users")
 @Getter
@@ -12,8 +14,8 @@ import lombok.*;
 @Builder
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Column(nullable = false)
     private String name;
@@ -23,9 +25,6 @@ public class User {
 
     @Column(nullable = false)
     private String password;
-
-    @Column(name = "activation_token")
-    private String activationToken;
 
     @Builder.Default
     @Column(nullable = false)
