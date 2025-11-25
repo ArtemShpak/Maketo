@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.maketo.auth.api.RegisterUseCase;
 
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -45,7 +46,7 @@ public class AuthController {
         return ResponseEntity.ok(token);
     }
 
-    @GetMapping("/activate")
+    @PostMapping("/activate")
     public ResponseEntity<String> activateUser(@RequestParam String token) {
         UUID userId = activationTokenRepository.findUserIdByToken(token)
                 .orElseThrow(() -> new RuntimeException("Токен недійсний або прострочений"));
@@ -60,6 +61,8 @@ public class AuthController {
 
         return ResponseEntity.ok("Акаунт успішно активовано!");
     }
+
+
 
     @GetMapping("/test")
     public ResponseEntity<String> test() {

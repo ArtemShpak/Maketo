@@ -16,7 +16,8 @@ public class TemplateService {
     public String buildEmail(String name, String token, String templateName) {
         Context context = new Context();
         context.setVariable("username", name);
-        context.setVariable("activationLink", "https://example.com/activate?token=" + token);
+        context.setVariable("activationEndpoint", "http://localhost:8080/api/v1/auth/activate");
+        context.setVariable("token", token);
         return templateEngine.process(templateName, context);
     }
 }

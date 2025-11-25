@@ -1,15 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<body>
-<h1>Привет, <span th:text="${username}">User</span>!</h1>
-
-<p>
-    Ваш код подтверждения:
-    <b th:text="${code}">000000</b>
-</p>
-
-<p th:if="${expiresIn}">
-    Код истекает через <span th:text="${expiresIn}"></span> минут.
-</p>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Активация аккаунта</title>
+</head>
+<body style="font-family: Arial, sans-serif; padding: 20px;">
+<div style="max-width: 600px; margin: 0 auto;">
+    <h2>Здравствуйте, <span th:text="${username}">Пользователь</span>!</h2>
+    <p>Для активации вашего аккаунта нажмите на кнопку ниже:</p>
+    <div style="text-align: center; margin: 30px 0;">
+        <form th:action="${activationEndpoint}" method="post">
+            <input type="hidden" name="token" th:value="${token}">
+            <button type="submit"
+                    style="background-color: #4CAF50;
+                           color: white;
+                           padding: 15px 32px;
+                           border: none;
+                           font-size: 16px;
+                           border-radius: 4px;
+                           cursor: pointer;">
+                Активировать аккаунт
+            </button>
+        </form>
+    </div>
+</div>
 </body>
 </html>
