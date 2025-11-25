@@ -9,11 +9,11 @@ import org.springframework.data.redis.core.RedisHash;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@RedisHash(value = "activation_tokens", timeToLive = 86)
+@RedisHash(value = "forgot_password_tokens", timeToLive = 86)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ActivationToken {
+public class ForgotPasswordToken {
 
     @Id
     private String token;
@@ -22,7 +22,7 @@ public class ActivationToken {
 
     private LocalDateTime createdAt;
 
-    public ActivationToken(String token, UUID userId) {
+    public ForgotPasswordToken(String token, UUID userId) {
         this.token = token;
         this.userId = userId;
         this.createdAt = LocalDateTime.now();
