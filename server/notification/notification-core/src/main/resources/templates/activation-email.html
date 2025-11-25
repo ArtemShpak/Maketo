@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1>Привет, <span th:text="${username}">User</span>!</h1>
+
+<p>
+    Ваш код подтверждения:
+    <b th:text="${code}">000000</b>
+</p>
+
+<p th:if="${expiresIn}">
+    Код истекает через <span th:text="${expiresIn}"></span> минут.
+</p>
+</body>
+</html>

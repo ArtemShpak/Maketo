@@ -1,4 +1,4 @@
-package com.maketo.notification.config;
+package com.maketo.notification.adapter.messaging.config;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -42,3 +42,4 @@ public class RabbitAuthenticationConfig {
     }
 
 }
+
