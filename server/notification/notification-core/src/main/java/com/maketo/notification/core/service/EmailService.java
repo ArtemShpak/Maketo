@@ -1,12 +1,12 @@
 package com.maketo.notification.core.service;
 
-import com.maketo.notification.api.SendActivationEmailUseCase;
+import com.maketo.notification.api.SendEmailsUseCase;
 import com.maketo.notification.api.dto.UserActivationDto;
 import com.maketo.notification.spi.EmailSender;
 import org.springframework.stereotype.Service;
 
 @Service
-public class EmailService implements SendActivationEmailUseCase {
+public class EmailService implements SendEmailsUseCase {
 
     private final EmailSender emailSender;
     private final TemplateService templateService;
@@ -28,5 +28,10 @@ public class EmailService implements SendActivationEmailUseCase {
         
         String html = templateService.buildEmail(userDto.name(), userDto.activationToken(), ACTIVATION_EMAIL_TEMPLATE);
         emailSender.sendHtmlEmail(userDto.email(), "Activate your account", html);
+    }
+
+    @Override
+    public void sendResetPasswordEmail(UserActivationDto userDto) throws Exception {
+
     }
 }

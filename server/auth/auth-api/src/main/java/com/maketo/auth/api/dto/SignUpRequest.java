@@ -1,7 +1,7 @@
 package com.maketo.auth.api.dto;
 
-public record RegisterUserRequest(
+public record SignUpRequest(
         String username,
         String email,
-        String password
-) {}
+        String password)
+{}

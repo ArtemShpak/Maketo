@@ -1,14 +1,13 @@
 package com.maketo.auth.core.service;
 
 import com.maketo.auth.api.LoginUseCase;
-import com.maketo.auth.api.dto.LoginRequest;
+import com.maketo.auth.api.dto.SignInRequest;
 import com.maketo.auth.api.dto.TokenDto;
 import com.maketo.auth.spi.dto.User;
 import com.maketo.auth.core.exception.InvalidCredentialsException;
 import com.maketo.auth.spi.JwtTokenProvider;
 import com.maketo.auth.spi.PasswordHasher;
 import com.maketo.auth.spi.UserRepository;
-import com.maketo.auth.spi.dto.TokenPurpose;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -27,7 +26,7 @@ public class LoginService implements LoginUseCase {
     }
 
     @Override
-    public TokenDto login(LoginRequest request) {
+    public TokenDto login(SignInRequest request) {
         User user = userRepository.findByEmail(request.email())
                 .orElseThrow(InvalidCredentialsException::new);
 
@@ -35,7 +34,7 @@ public class LoginService implements LoginUseCase {
             throw new InvalidCredentialsException();
         }
 
-        String token = jwtTokenProvider.generateToken(user.getId(), TokenPurpose.AUTH);
+        String token = jwtTokenProvider.generateToken(user.getId());
         return new TokenDto(token);
     }
 }

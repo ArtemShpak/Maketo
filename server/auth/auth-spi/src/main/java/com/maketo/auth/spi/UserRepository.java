@@ -1,7 +1,6 @@
 package com.maketo.auth.spi;
 
 import com.maketo.auth.spi.dto.User;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

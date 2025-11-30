@@ -1,20 +1,15 @@
 package com.maketo.auth.controller;
 
+import com.maketo.auth.api.AccountActivationUseCase;
 import com.maketo.auth.api.LoginUseCase;
-import com.maketo.auth.api.dto.LoginRequest;
-import com.maketo.auth.api.dto.RegisterUserRequest;
-import com.maketo.auth.api.dto.RegisterUserResponse;
-import com.maketo.auth.api.dto.TokenDto;
-import com.maketo.auth.spi.ActivationTokenRepository;
-import com.maketo.auth.spi.UserRepository;
-import com.maketo.auth.spi.dto.User;
+import com.maketo.auth.api.ResetPasswordUseCase;
+import com.maketo.auth.api.dto.*;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 import com.maketo.auth.api.RegisterUseCase;
-
-import java.util.Map;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -22,51 +17,59 @@ public class AuthController {
 
     private final RegisterUseCase registerUseCase;
     private final LoginUseCase loginUseCase;
-    private final ActivationTokenRepository activationTokenRepository;
-    private final UserRepository userRepository;
+    private final ResetPasswordUseCase resetPasswordUseCase;
+    private final AccountActivationUseCase accountActivationUseCase;
+    private final AuthenticationManager authenticationManager;
 
     public AuthController(RegisterUseCase registerUseCase, LoginUseCase loginUseCase,
-                          ActivationTokenRepository activationTokenRepository,
-                          UserRepository userRepository) {
+                          ResetPasswordUseCase resetPasswordUseCase, AccountActivationUseCase accountActivationUseCase, AuthenticationManager authenticationManager) {
         this.registerUseCase = registerUseCase;
         this.loginUseCase = loginUseCase;
-        this.activationTokenRepository = activationTokenRepository;
-        this.userRepository = userRepository;
+        this.resetPasswordUseCase = resetPasswordUseCase;
+        this.accountActivationUseCase = accountActivationUseCase;
+        this.authenticationManager = authenticationManager;
     }
 
     @PostMapping("/register")
-    public ResponseEntity<RegisterUserResponse> register(@Valid @RequestBody RegisterUserRequest request) {
-        RegisterUserResponse response = registerUseCase.register(request);
+    public ResponseEntity<String> register(@Valid @RequestBody SignUpRequest request) {
+        String response = registerUseCase.register(request);
         return ResponseEntity.ok(response);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<TokenDto> login(@Valid @RequestBody LoginRequest request) {
+    public ResponseEntity<TokenDto> login(@Valid @RequestBody SignInRequest request) {
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.email(), request.password()));
         TokenDto token = loginUseCase.login(request);
         return ResponseEntity.ok(token);
     }
 
     @PostMapping("/activate")
     public ResponseEntity<String> activateUser(@RequestParam String token) {
-        UUID userId = activationTokenRepository.findUserIdByToken(token)
-                .orElseThrow(() -> new RuntimeException("Токен недійсний або прострочений"));
-
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("Користувач не знайдений"));
-
-        user.setActive(true);
-        userRepository.save(user);
-
-        activationTokenRepository.deleteByToken(token);
-
-        return ResponseEntity.ok("Акаунт успішно активовано!");
+        try {
+            accountActivationUseCase.activate(token);
+            return ResponseEntity.ok("Акаунт успішно активовано!");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body("Невірний або прострочений токен активації.");
+        } catch (IllegalStateException e) {
+            return ResponseEntity.status(404).body(e.getMessage());
+        }
     }
-
-
 
     @GetMapping("/test")
     public ResponseEntity<String> test() {
         return ResponseEntity.ok("Auth service is working!");
+    }
+
+    @PostMapping("/reset-password")
+    ResponseEntity<String> resetPassword(@Valid @RequestBody ResetPasswordRequest request) {
+        resetPasswordUseCase.resetPasswordRequest(request);
+        return ResponseEntity.ok("Password reset link sent to email.");
+    }
+
+    @PostMapping("/confirm-reset")
+    ResponseEntity<String> confirmResetPassword(@Valid @RequestBody NewPasswordRequest request) {
+        resetPasswordUseCase.resetPassword(request);
+        return ResponseEntity.ok("Password reset successfully.");
     }
 }
 

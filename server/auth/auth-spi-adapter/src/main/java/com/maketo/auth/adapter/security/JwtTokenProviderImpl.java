@@ -1,7 +1,6 @@
 package com.maketo.auth.adapter.security;
 
 import com.maketo.auth.spi.JwtTokenProvider;
-import com.maketo.auth.spi.dto.TokenPurpose;
 import com.maketo.auth.spi.dto.VerifiedToken;
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
@@ -15,7 +14,6 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.function.Function;
 
 @Component
 public class JwtTokenProviderImpl implements JwtTokenProvider {
@@ -25,7 +23,7 @@ public class JwtTokenProviderImpl implements JwtTokenProvider {
     private static final long ACCESS_TTL_MILLIS = 30 * 60 * 1000;
 
     @Override
-    public String generateToken(UUID userId, TokenPurpose purpose) {
+    public String generateToken(UUID userId) {
         try {
             Date now = new Date();
             Date exp = new Date(now.getTime() + ACCESS_TTL_MILLIS);
@@ -33,7 +31,6 @@ public class JwtTokenProviderImpl implements JwtTokenProvider {
                     .subject(userId.toString())
                     .issueTime(now)
                     .expirationTime(exp)
-                    .claim("purpose", purpose.name())
                     .jwtID(UUID.randomUUID().toString())
                     .build();
             SignedJWT jwt = new SignedJWT(new JWSHeader(JWSAlgorithm.HS256), claims);
@@ -46,12 +43,12 @@ public class JwtTokenProviderImpl implements JwtTokenProvider {
     }
 
     @Override
-    public Optional<VerifiedToken> verifyToken(String rawToken, TokenPurpose expectedPurpose) {
+    public Optional<VerifiedToken> verifyToken(String rawToken) {
         return parse(rawToken)
                 .filter(this::signatureValid)
                 .flatMap(this::extractClaims)
                 .filter(this::notExpired)
-                .flatMap(claimsToVerifiedToken(expectedPurpose));
+                .flatMap(this::claimsToVerifiedToken);
     }
 
     private Optional<SignedJWT> parse(String raw) {
@@ -84,31 +81,16 @@ public class JwtTokenProviderImpl implements JwtTokenProvider {
         return exp != null && Instant.now().isBefore(exp.toInstant());
     }
 
-    private Function<JWTClaimsSet, Optional<VerifiedToken>> claimsToVerifiedToken(TokenPurpose expected) {
-        return claims -> {
-            String subject = claims.getSubject();
-            String purposeStr = stringClaim(claims, "purpose");
-            if (subject == null || purposeStr == null) return Optional.empty();
-            TokenPurpose actual;
-            try {
-                actual = TokenPurpose.valueOf(purposeStr);
-            } catch (IllegalArgumentException e) {
-                return Optional.empty();
-            }
-            if (actual != expected) return Optional.empty();
-            Date iat = claims.getIssueTime();
-            Date exp = claims.getExpirationTime();
-            return Optional.of(new VerifiedToken(
+    private Optional<VerifiedToken> claimsToVerifiedToken(JWTClaimsSet claims) {
+        String subject = claims.getSubject();
+        if (subject == null) return Optional.empty();
+        Date iat = claims.getIssueTime();
+        Date exp = claims.getExpirationTime();
+        if (exp == null) return Optional.empty();
+        return Optional.of(new VerifiedToken(
                 subject,
                 iat != null ? iat.toInstant() : Instant.now(),
-                exp.toInstant(),
-                actual
-            ));
-        };
-    }
-
-    private String stringClaim(JWTClaimsSet claims, String name) {
-        Object v = claims.getClaim(name);
-        return (v instanceof String s && !s.isBlank()) ? s : null;
+                exp.toInstant()
+        ));
     }
 }

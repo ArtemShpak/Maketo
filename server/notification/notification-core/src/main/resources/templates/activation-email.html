@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Активация аккаунта</title>
+    <title>Активація акаунту</title>
 </head>
 <body style="font-family: Arial, sans-serif; padding: 20px;">
 <div style="max-width: 600px; margin: 0 auto;">
-    <h2>Здравствуйте, <span th:text="${username}">Пользователь</span>!</h2>
-    <p>Для активации вашего аккаунта нажмите на кнопку ниже:</p>
+    <h2>Привіт, <span th:text="${username}"></span>!</h2>
+    <p>Для активації вашого акаунту натисніть на кнопку нижче:</p>
     <div style="text-align: center; margin: 30px 0;">
         <form th:action="${activationEndpoint}" method="post">
             <input type="hidden" name="token" th:value="${token}">
@@ -20,7 +20,7 @@
                            font-size: 16px;
                            border-radius: 4px;
                            cursor: pointer;">
-                Активировать аккаунт
+                Активувати акаунт
             </button>
         </form>
     </div>

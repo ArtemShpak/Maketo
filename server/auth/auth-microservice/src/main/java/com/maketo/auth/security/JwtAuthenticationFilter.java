@@ -1,13 +1,13 @@
 package com.maketo.auth.security;
 
 import com.maketo.auth.spi.JwtTokenProvider;
-import com.maketo.auth.spi.dto.TokenPurpose;
 import com.maketo.auth.spi.dto.VerifiedToken;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -39,7 +39,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
 
         String jwt = authHeader.substring(7);
-        Optional<VerifiedToken> verifiedTokenOpt = jwtTokenProvider.verifyToken(jwt, TokenPurpose.AUTH);
+        Optional<VerifiedToken> verifiedTokenOpt = jwtTokenProvider.verifyToken(jwt);
 
         if (verifiedTokenOpt.isPresent() && SecurityContextHolder.getContext().getAuthentication() == null) {
             VerifiedToken verifiedToken = verifiedTokenOpt.get();

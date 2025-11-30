@@ -14,22 +14,33 @@ import org.springframework.context.annotation.Configuration;
 public class AuthRabbitConfig {
 
     @Value("${rabbitmq.exchange.auth:auth.exchange}")
-    private String exchange;
+    private String EXCHANGE;
 
     @Value("${rabbitmq.routing-key.user-registration:user.registration}")
-    private String routingKey;
+    private String ACTIVATION_ROUTING_KEY;
 
     @Value("${rabbitmq.queue.user-registration:user.registration.queue}")
-    private String queueName;
+    private String ACTIVATION_QUEUE;
+
+    @Value("${rabbitmq.routing-key.reset-password:reset.password}")
+    private String RESET_PASSWORD_ROUTING_KEY;
+
+    @Value("${rabbitmq.queue.reset-password:reset.password.queue}")
+    private String RESET_PASSWORD_QUEUE;
 
     @Bean
     public TopicExchange authExchange() {
-        return new TopicExchange(exchange);
+        return new TopicExchange(EXCHANGE);
     }
 
     @Bean
     public Queue userRegistrationQueue() {
-        return new Queue(queueName, true);
+        return new Queue(ACTIVATION_QUEUE, true);
+    }
+
+    @Bean
+    public Queue resetPasswordQueue() {
+        return new Queue(RESET_PASSWORD_QUEUE, true);
     }
 
     @Bean
@@ -37,7 +48,15 @@ public class AuthRabbitConfig {
         return BindingBuilder
                 .bind(userRegistrationQueue)
                 .to(authExchange)
-                .with(routingKey);
+                .with(ACTIVATION_ROUTING_KEY);
+    }
+
+    @Bean
+    public Binding resetPasswordBinding(Queue resetPasswordQueue, TopicExchange authExchange) {
+        return BindingBuilder
+                .bind(resetPasswordQueue)
+                .to(authExchange)
+                .with(RESET_PASSWORD_ROUTING_KEY);
     }
 
     @Bean

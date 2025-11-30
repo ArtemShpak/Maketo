@@ -9,7 +9,7 @@ import org.springframework.data.redis.core.RedisHash;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@RedisHash(value = "activation_tokens", timeToLive = 86)
+@RedisHash(value = "activation_tokens", timeToLive = 860)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

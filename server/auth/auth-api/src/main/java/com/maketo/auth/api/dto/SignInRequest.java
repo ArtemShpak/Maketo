@@ -1,6 +1,6 @@
 package com.maketo.auth.api.dto;
 
-public record LoginRequest(
+public record SignInRequest(
         String email,
         String password
 ) {}

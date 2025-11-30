@@ -1,19 +1,19 @@
 package com.maketo.auth.adapter.persistence;
 
 import com.maketo.auth.adapter.persistence.entity.ForgotPasswordToken;
-import com.maketo.auth.spi.ForgetPasswordTokenRepository;
+import com.maketo.auth.spi.ResetPasswordTokenRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 import java.util.UUID;
 
 @Component
-public class RedisForgetPasswordTokenAdapter implements ForgetPasswordTokenRepository {
+public class RedisResetPasswordTokenAdapter implements ResetPasswordTokenRepository {
     //TODO: Convert ForgetPasswordTokenAdapter with ActivationTokenAdapter into one generic class and their spi interface into one generic interface
 
-    private final RedisForgetPasswordTokenRepository redisRepository;
+    private final RedisResetPasswordTokenRepository redisRepository;
 
-    public RedisForgetPasswordTokenAdapter(RedisForgetPasswordTokenRepository redisRepository) {
+    public RedisResetPasswordTokenAdapter(RedisResetPasswordTokenRepository redisRepository) {
         this.redisRepository = redisRepository;
     }
 
