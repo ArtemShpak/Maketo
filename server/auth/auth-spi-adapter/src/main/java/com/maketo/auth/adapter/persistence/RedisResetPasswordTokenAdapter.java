@@ -1,6 +1,6 @@
 package com.maketo.auth.adapter.persistence;
 
-import com.maketo.auth.adapter.persistence.entity.ForgotPasswordToken;
+import com.maketo.auth.adapter.persistence.entity.ForgetPasswordToken;
 import com.maketo.auth.spi.ResetPasswordTokenRepository;
 import org.springframework.stereotype.Component;
 
@@ -19,14 +19,14 @@ public class RedisResetPasswordTokenAdapter implements ResetPasswordTokenReposit
 
     @Override
     public void save(String token, UUID userId) {
-        ForgotPasswordToken activationToken = new ForgotPasswordToken(token, userId);
+        ForgetPasswordToken activationToken = new ForgetPasswordToken(token, userId);
         redisRepository.save(activationToken);
     }
 
     @Override
     public Optional<UUID> findUserIdByToken(String token) {
         return redisRepository.findById(token)
-                .map(ForgotPasswordToken::getUserId);
+                .map(ForgetPasswordToken::getUserId);
     }
 
     @Override
