@@ -1,10 +1,10 @@
 package com.maketo.auth.api.dto;
 
-public record TokenDto(
+public record LoginResponse(
         String accessToken,
         String tokenType
 ) {
-    public TokenDto(String accessToken) {
+    public LoginResponse(String accessToken) {
         this(accessToken, "Bearer");
     }
 }

@@ -1,6 +1,7 @@
 package com.maketo.auth.exception;
 
 import com.maketo.auth.core.exception.DuplicateEmailException;
+import com.maketo.auth.core.exception.InvalidTokenException;
 import com.maketo.auth.core.exception.InvalidCredentialsException;
 import com.maketo.auth.core.exception.UserNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestControllerAdvice
-public class GlobalExceptionHandler {
+public class AuthExceptionHandler {
 
     @ExceptionHandler(DuplicateEmailException.class)
     public ResponseEntity<ErrorResponse> handleDuplicate(DuplicateEmailException ex,
@@ -46,6 +47,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGeneric(Exception ex, HttpServletRequest req) {
         return build(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred", req.getRequestURI());
+    }
+
+    @ExceptionHandler(InvalidTokenException.class)
+    public ResponseEntity<ErrorResponse> handleExpiredActivationToken(InvalidTokenException ex, HttpServletRequest req) {
+        return build(HttpStatus.UNAUTHORIZED, ex.getMessage(), req.getRequestURI());
     }
 
     private ResponseEntity<ErrorResponse> build(HttpStatus status, String message, String path) {

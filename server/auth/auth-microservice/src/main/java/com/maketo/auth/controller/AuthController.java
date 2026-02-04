@@ -11,6 +11,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.web.bind.annotation.*;
 import com.maketo.auth.api.RegisterUseCase;
 
+import java.time.Instant;
+
 @RestController
 @RequestMapping("/api/v1/auth")
 public class AuthController {
@@ -31,28 +33,26 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@Valid @RequestBody SignUpRequest request) {
+    public ResponseEntity<RegisterResponse> register(@Valid @RequestBody RegisterRequest request) {
         String response = registerUseCase.register(request);
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(new RegisterResponse(
+                "Account successfully registered",
+                Instant.now(),
+                response
+                ));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<TokenDto> login(@Valid @RequestBody SignInRequest request) {
+    public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.email(), request.password()));
-        TokenDto token = loginUseCase.login(request);
+        LoginResponse token = loginUseCase.login(request);
         return ResponseEntity.ok(token);
     }
 
     @PostMapping("/activate")
-    public ResponseEntity<String> activateUser(@RequestParam String token) {
-        try {
+    public ResponseEntity<AccountActivationResponse> activateUser(@RequestParam String token) {
             accountActivationUseCase.activate(token);
-            return ResponseEntity.ok("Акаунт успішно активовано!");
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body("Невірний або прострочений токен активації.");
-        } catch (IllegalStateException e) {
-            return ResponseEntity.status(404).body(e.getMessage());
-        }
+            return ResponseEntity.ok(new AccountActivationResponse("Account successfully activated"));
     }
 
     @GetMapping("/test")
@@ -61,15 +61,15 @@ public class AuthController {
     }
 
     @PostMapping("/reset-password")
-    ResponseEntity<String> resetPassword(@Valid @RequestBody ResetPasswordRequest request) {
+    ResponseEntity<ResetPasswordResponse> resetPassword(@Valid @RequestBody ResetPasswordRequest request) {
         resetPasswordUseCase.resetPasswordRequest(request);
-        return ResponseEntity.ok("Password reset link sent to email.");
+        return ResponseEntity.ok(new ResetPasswordResponse ("Password reset link sent to email."));
     }
 
     @PostMapping("/confirm-reset")
-    ResponseEntity<String> confirmResetPassword(@Valid @RequestBody NewPasswordRequest request) {
+    ResponseEntity<PasswordResetConfirmation> confirmResetPassword(@Valid @RequestBody NewPasswordRequest request) {
         resetPasswordUseCase.resetPassword(request);
-        return ResponseEntity.ok("Password reset successfully.");
+        return ResponseEntity.ok(new PasswordResetConfirmation ("Password reset successfully."));
     }
 }
 

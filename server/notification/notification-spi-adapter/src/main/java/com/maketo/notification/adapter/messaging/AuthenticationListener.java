@@ -26,19 +26,19 @@ public class AuthenticationListener {
                     UserMapper.toUserActivationDto(userDto)
             );
         } catch (Exception e) {
-            log.error("❌ [AUTHENTICATION LISTENER] Ошибка при отправке email активации: {}", e.getMessage(), e);
+            log.error("❌ [AUTHENTICATION LISTENER] Помилка при надсиланні активаційного листа: {}", e.getMessage(), e);
         }
     }
 
     @RabbitListener(queues = "${spring.rabbitmq.queue.reset-password:reset.password.queue}")
     public void sendResetPasswordEmail(UserDto userDto) {
         try {
-//            sendEmailsUseCase.sendResetPasswordEmail(
-//                    UserMapper.toUserActivationDto(userDto)
-//            );
-            System.out.println("📥 [NOTIFICATION SERVICE] Получено событие сброса пароля пользователя!");
+            sendEmailsUseCase.sendResetPasswordEmail(
+                    UserMapper.toUserActivationDto(userDto)
+            );
+            System.out.println("📥 [NOTIFICATION SERVICE] Отримана подія скидання пароля від юзера");
         } catch (Exception e) {
-            log.error("❌ [AUTHENTICATION LISTENER] Ошибка при отправке email сброса пароля: {}", e.getMessage(), e);
+            log.error("❌ [AUTHENTICATION LISTENER] Помилка при надсиланні reset-листа: {}", e.getMessage(), e);
         }
     }
 }

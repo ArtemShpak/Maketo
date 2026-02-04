@@ -1,8 +1,8 @@
 package com.maketo.auth.api;
 
-import com.maketo.auth.api.dto.SignUpRequest;
+import com.maketo.auth.api.dto.RegisterRequest;
 
 public interface RegisterUseCase {
-    String register(SignUpRequest request);
+    String register(RegisterRequest request);
 }
 

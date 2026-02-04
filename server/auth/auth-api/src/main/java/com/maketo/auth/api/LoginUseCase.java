@@ -1,9 +1,9 @@
 package com.maketo.auth.api;
 
-import com.maketo.auth.api.dto.SignInRequest;
-import com.maketo.auth.api.dto.TokenDto;
+import com.maketo.auth.api.dto.LoginRequest;
+import com.maketo.auth.api.dto.LoginResponse;
 
 public interface LoginUseCase {
-    TokenDto login(SignInRequest request);
+    LoginResponse login(LoginRequest request);
 }
 

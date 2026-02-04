@@ -2,7 +2,7 @@ package com.maketo.auth.core.service;
 
 import com.maketo.auth.spi.*;
 import com.maketo.auth.api.RegisterUseCase;
-import com.maketo.auth.api.dto.SignUpRequest;
+import com.maketo.auth.api.dto.RegisterRequest;
 import com.maketo.auth.core.mapper.UserMapper;
 import com.maketo.auth.spi.dto.Role;
 import com.maketo.auth.spi.dto.User;
@@ -32,7 +32,7 @@ public class RegistrationService implements RegisterUseCase {
     }
 
     @Override
-    public String register(SignUpRequest request) {
+    public String register(RegisterRequest request) {
         if (userRepository.existsByEmail(request.email())) {
             throw new DuplicateEmailException(request.email());
         }

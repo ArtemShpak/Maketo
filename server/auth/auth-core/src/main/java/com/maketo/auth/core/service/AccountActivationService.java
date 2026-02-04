@@ -1,22 +1,21 @@
 package com.maketo.auth.core.service;
 
 import com.maketo.auth.api.AccountActivationUseCase;
+import com.maketo.auth.core.exception.InvalidTokenException;
+import com.maketo.auth.core.exception.UserNotFoundException;
 import com.maketo.auth.spi.ActivationTokenRepository;
 import com.maketo.auth.spi.UserRepository;
 import com.maketo.auth.spi.dto.User;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
+@Slf4j
 @Service
 @Transactional
 public class AccountActivationService implements AccountActivationUseCase {
-
-    private static final Logger logger = LoggerFactory.getLogger(AccountActivationService.class);
-
 
     private final ActivationTokenRepository activationTokenRepository;
     private final UserRepository userRepository;
@@ -28,18 +27,18 @@ public class AccountActivationService implements AccountActivationUseCase {
 
     @Override
     public void activate(String token) {
-        logger.debug("Starting activation for token: {}", token);
+        log.debug("Starting activation for token: {}", token);
         UUID userId = activationTokenRepository.findUserIdByToken(token)
-                .orElseThrow(() -> new RuntimeException("Токен недійсний або прострочений"));
+                .orElseThrow(InvalidTokenException::new);
 
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("Користувач не знайдений"));
+                .orElseThrow(() -> new UserNotFoundException(userId));
 
         user.setActive(true);
 
         userRepository.save(user);
 
         activationTokenRepository.deleteByToken(token);
-        logger.debug("Activation completed for user: {}", userId);
+        log.debug("Activation completed for user: {}", userId);
     }
 }
